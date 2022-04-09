@@ -12,15 +12,82 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
+  <!-- Header Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Oxygen&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/product.css" type="text/css" />
 
 </head>
 
 <body>
   <%- include('partials/_header') %>
+
+  <main class = "container">
+    <h1 class ="lrg-banner">Searching for shirt in Vancouver</h1>
+    <p>
+      Trade your things at home for new and gently used items. Shop sustainably on Gregslist with a growing community in your local city.
+    </p>
+    <h4 class="featured-items">Featured Items</h2>
+      <div class ="feature-container">
+        <section class="product-container">
+          <div class ="product-image">image</div>
+          <div class ="product-bar">
+            <div class ="product-name">Product Name</div>
+            <div class ="product-icons">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+          </div>
+          <div class ="product-description">Please add some text to me!</div>
+        </section>
+        <section class="product-container">
+          <div class ="product-image">image</div>
+          <div class ="product-bar">
+            <div class ="product-name">Product Name</div>
+            <div class ="product-icons">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+          </div>
+          <div class ="product-description">Please add some text to me!</div>
+        </section>
+        <section class="product-container">
+          <div class ="product-image">image</div>
+          <div class ="product-bar">
+            <div class ="product-name">Product Name</div>
+            <div class ="product-icons">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+          </div>
+          <div class ="product-description">Please add some text to me!</div>
+        </section>
+        <section class="product-container">
+          <div class ="product-image">image</div>
+          <div class ="product-bar">
+            <div class ="product-name">Product Name</div>
+            <div class ="product-icons">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+          </div>
+          <div class ="product-description">Please add some text to me!</div>
+        </section>
+      </div>
+      <div class="item-container"></div>
+  </main>
 
 
 
