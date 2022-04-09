@@ -56,8 +56,6 @@ app.use(
   })
 );
 
-
-
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -77,18 +75,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-//this code could go into a login route, just dont want to cause a merge conflict
+//** TO DO
+// this code could go into a login route
+// ** How to use: go to /users/:id to login as a user
 // set user cookie when logged in
-// do this instead
-app.get('/login/:id', (req, res) => {
+app.get("/login/:id", (req, res) => {
   // using encrypted cookies
   req.session.user_id = req.params.id;
 
-  // or using plain-text cookies
-  // res.cookie('user_id', req.params.id);
-
-  // send the user somewhere
-  res.redirect('/');
+  // send the user back to home once logged in
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
