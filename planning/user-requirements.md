@@ -2,6 +2,7 @@ User:
 
 [] As a user, I want to land on the homepage and see categories and featured items.
 [] As a user, I expect a search bar and be able to search for an item(s).
+[] As a user, I should be able to create an account.
 [] As a user, I expect there to be a featured items list.
 [] As a user, I want to be able to click on a category and be redirected to that category's page.
 [] As a user, I expect the logo to send me home.
@@ -11,7 +12,6 @@ User:
 
 Admin:
 
-[] As an admin, I should be able to create an account.
 [] Given I'm an admin, I should be able to log in to my account.
 [] Given I'm logged in, I should see a "Post ad" button on the navbar.
 [] Given I'm logged in, I should see a "My listings" button that redirects to a "My listings" page.
