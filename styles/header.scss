@@ -1,4 +1,32 @@
+header {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: bold;
+}
+
 .me-2 {
   width: 700px;
   border-radius: 30px;
 }
+
+.mail-icon {
+  display: flex;
+  align-items: center;
+  color: rgb(180, 180, 180);
+  margin-right: 10px;
+}
+
+.navbar-collapse {
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  align-content: flex-end;
+}
+
+.btn-login {
+  margin-right: 10px;
+}
+
+// font-family: 'Bungee', cursive;
+// font-family: 'Oxygen', sans-serif;
+// font-family: 'Source Sans Pro', sans-serif;
+// font-family: 'Ubuntu', sans-serif;
