@@ -7,6 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const cookieSession = require("cookie-session");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -33,6 +34,28 @@ app.use(
 
 app.use(express.static("public"));
 
+// setup cookie session
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [
+      "C&F)J@Nc",
+      "9y$B&E)H",
+      "s6v9y/B?",
+      "Xp2s5v8y",
+      "fUjXn2r5",
+      "McQfTjWn",
+      "(H+MbQeT",
+      "A?D(G+Kb",
+      "8x!A%D*G",
+      "r4u7w!z%",
+    ],
+
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  })
+);
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -50,6 +73,18 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+//** TO DO
+// this code could go into a login route
+// ** How to use: go to /users/:id to login as a user
+// set user cookie when logged in
+app.get("/login/:id", (req, res) => {
+  // using encrypted cookies
+  req.session.user_id = req.params.id;
+
+  // send the user back to home once logged in
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
