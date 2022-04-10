@@ -1,0 +1,101 @@
+.mail-icon {
+  display: flex;
+  align-items: center;
+  color: rgb(180, 180, 180);
+  margin-right: 10px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 400px;
+}
+
+.profile-box {
+  background-color: #f4f4f3;
+  display: flex;
+  align-items: center;
+  border: solid black 5px;
+  border-radius: 10px;
+  width: 53%;
+  height: 100%;
+}
+
+.profile-pic {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+  margin-left: 20px;
+  width: 40%;
+  height: 90%;
+}
+
+.info-box {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid black;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 60%;
+  height: 90%;
+}
+
+.user-product {
+  border: solid black;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  font-size: smaller;
+};
+
+.post-listing-box {
+  background-color: #f4f4f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid black 5px;
+  border-radius: 10px;
+  width: 44%;
+  height: 100%;
+}
+
+.post-listing-form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid black;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 100%;
+  height: 90%;
+}
+
+.my-listing-title {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.user-profile-name {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile-info {
+  margin-left: 10px;
+}
+
+.my-listing-info {
+  margin-left: 10px;
+}
+
