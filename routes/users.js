@@ -21,3 +21,8 @@ module.exports = (db) => {
   });
   return router;
 };
+
+router.get("/", (req, res) => {
+  res.render("user");
+});
+

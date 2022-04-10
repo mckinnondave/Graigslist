@@ -12,18 +12,46 @@ module.exports = (db) => {
   return router;
 };
 
-// set user cookie when logged in
-router.get("/:id", (req, res) => {
-// using encrypted cookies
-req.session.user_id = req.params.id;
-// send the user back to home once logged in
-res.redirect("/user");
-});
 
 
-// module.exports = (db) => {
 
-// router.get("/user", (req, res) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // set user cookie when logged in
+// router.get("/:id", (req, res) => {
+// // using encrypted cookies
+// req.session.user_id = req.params.id;
+// // send the user back to home once logged in
+// res.redirect("/user");
+// });
+
+// router.get("/login", (req, res) => {
 //   res.render("user");
 // });
 
