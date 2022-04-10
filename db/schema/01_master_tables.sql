@@ -26,7 +26,8 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS categories CASCADE;
 CREATE TABLE categories (
   id SERIAL PRIMARY KEY NOT NULL,
-  category_name VARCHAR(255) NOT NULL
+  category_name VARCHAR(255) NOT NULL,
+  category_slug VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS listings CASCADE;
