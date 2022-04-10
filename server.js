@@ -60,11 +60,20 @@ app.use(
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
+const searchRoutes = require("./routes/search");
+const listingsRoutes = require("./routes/listings");
+const listingRoutes = require("./routes/listing");
+const messagesRoutes = require("./routes/messages");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/users", usersRoutes(db));
+app.use("/user", usersRoutes(db));
 app.use("/login", loginRoutes(db));
+app.use("/search", searchRoutes(db));
+app.use("/listings", listingsRoutes(db));
+app.use("/listing", listingRoutes(db));
+app.use("/messages", messagesRoutes(db));
+
 
 // Note: mount other resources here, using the same pattern above
 
@@ -73,11 +82,15 @@ app.use("/login", loginRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
-});
+  // const username = req.session.user.name;
+  // const admin = req.session.user.admin;
 
-app.get("/user", (req, res) => {
-  res.render("user");
+  // const templateVars = { username, admin };
+
+  // if (req.session.user.admin) {
+  //   return res.render("user", templateVars);
+  // }
+  res.render("index"/*templateVars*/ );
 });
 
 app.listen(PORT, () => {
