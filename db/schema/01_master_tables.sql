@@ -36,7 +36,7 @@ CREATE TABLE listings (
   name VARCHAR(255) NOT NULL,
   description TEXT,
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
-  price_in_cents SMALLINT NOT NULL,
+  price_in_cents BIGINT NOT NULL,
   image_url VARCHAR(255),
   sold BOOLEAN NOT NULL DEFAULT false,
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE

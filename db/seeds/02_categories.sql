@@ -1,5 +1,5 @@
 
-INSERT INTO categories (id,category_name,slug_name)
+INSERT INTO categories (id,category_name,category_slug)
 VALUES
     ('1', 'Art & Handmade', 'art_handmade'),
     ('2', 'Clothing', 'clothing'),
@@ -7,6 +7,5 @@ VALUES
     ('4', 'Furniture', 'furniture'),
     ('5', 'Books', 'books'),
     ('6', 'Video Games', 'video_games'),
-    ('7', 'Instruments', 'instruments'),
-    ('8', 'Movies', 'movies'),
-    ('', '', '');
+    ('7', 'Automotive', 'automotive'),
+    ('8', 'Movies', 'movies');
