@@ -59,18 +59,21 @@ app.use(
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-<<<<<<< HEAD
-
-
-
 const loginRoutes = require("./routes/login");
+const searchRoutes = require("./routes/search");
+const listingsRoutes = require("./routes/listings");
+const listingRoutes = require("./routes/listing");
+const messagesRoutes = require("./routes/messages");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
 app.use("/login", loginRoutes(db));
+app.use("/search", searchRoutes(db));
+app.use("/istings", listingsRoutes(db));
+app.use("/listing", listingRoutes(db));
+app.use("/messages", messagesRoutes(db));
 
->>>>>>> 1524da7db7cb6b434468815dd920e3fa752c6af9
 // Note: mount other resources here, using the same pattern above
 
 // Home page
