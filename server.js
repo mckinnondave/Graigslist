@@ -70,9 +70,10 @@ const messagesRoutes = require("./routes/messages");
 app.use("/users", usersRoutes(db));
 app.use("/login", loginRoutes(db));
 app.use("/search", searchRoutes(db));
-app.use("/istings", listingsRoutes(db));
+app.use("/listings", listingsRoutes(db));
 app.use("/listing", listingRoutes(db));
 app.use("/messages", messagesRoutes(db));
+
 
 // Note: mount other resources here, using the same pattern above
 
@@ -84,7 +85,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/user", (req, res) => {
+router.get("/user", (req, res) => {
   res.render("user");
 });
 
