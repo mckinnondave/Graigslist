@@ -8,13 +8,24 @@ body {
   font-weight: bold;
 }
 
+.category-container {
+  background-color: #f4f4f3;
+  border-top: solid #b4b4b4 1px;
+  border-bottom: solid #b4b4b4 1px;
+}
+
 .category-bar {
-  border: solid black;
   padding-top: 1em;
   padding-bottom: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.cat-items:hover {
+  transition: .3s;
+  color: #7c7b7b;
+  cursor: pointer
 }
 
 .featured-items {
@@ -23,6 +34,3 @@ body {
   border-bottom: solid black 5px;
 }
 
-.item-container {
-  border-top: solid black 5px;
-}

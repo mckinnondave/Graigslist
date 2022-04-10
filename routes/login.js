@@ -9,15 +9,17 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  // set user cookie when logged in
-  router.get("/:id", (req, res) => {
-    // using encrypted cookies
-    req.session.user_id = req.params.id;
-    // send the user back to home once logged in
-    res.redirect("/user");
-  });
   return router;
 };
+
+// set user cookie when logged in
+router.get("/:id", (req, res) => {
+// using encrypted cookies
+req.session.user_id = req.params.id;
+// send the user back to home once logged in
+res.redirect("/user");
+});
+
 
 // module.exports = (db) => {
 

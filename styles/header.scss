@@ -1,6 +1,11 @@
 header {
   font-family: 'Oxygen', sans-serif;
   font-weight: bold;
+  border-bottom: solid #b4b4b4 1px;
+}
+
+nav {
+  background-color: #f4f4f3;
 }
 
 .me-2 {
@@ -8,12 +13,12 @@ header {
   border-radius: 30px;
 }
 
-.mail-icon {
-  display: flex;
-  align-items: center;
-  color: rgb(180, 180, 180);
-  margin-right: 10px;
-}
+// .mail-icon {
+//   display: flex;
+//   align-items: center;
+//   color: rgb(180, 180, 180);
+//   margin-right: 10px;
+// }
 
 .navbar-collapse {
   align-content: center;
