@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="../styles/header.css" type="text/css" />
   <link rel="stylesheet" href="../styles/main.css" type="text/css" />
   <link rel="stylesheet" href="../styles/product.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/user-page.css" type="text/css" />
 
 </head>
 
@@ -35,30 +36,37 @@
   <%- include('partials/_user-header') %>
 
   <div class = "container">
-    <h1 class ="lrg-banner">Welcome Back Andy!</h1>
-    <p>
-      Sell your things at home for new and gently used items. Shop sustainably on Graigslist with a growing community in your local city.
-    </p>
+    <h1 class ="lrg-banner">Hi 'Andy'!</h1>
   </div>
-    <div class="category-container">
-      <div class="category-bar container">
-        <div class ="cat-items">Art & Handmade</div>
-        <div class ="cat-items">Clothing</div>
-        <div class ="cat-items">Electronics</div>
-        <div class ="cat-items">Furniture</div>
-        <div class ="cat-items">Books</div>
-        <div class ="cat-items">Video Games</div>
-        <div class ="cat-items">Instruments</div>
-        <div class ="cat-items">Movies</div>
+  <section class = "container profile-section">
+    <div class ="profile-box">
+      <div class ="profile-pic">Profile Pic</div>
+      <div class="info-box">
+        <div class="user-profile-name">User Name</div>
+        <div class="profile-info">User Email</div>
+        <div class="profile-info">Street Address</div>
+        <div class="profile-info">City, Province</div>
+        <div class="profile-info">Country</div>
       </div>
     </div>
+    <div class="post-listing-box">
+      <div class="post-listing-form">
+        <div class="my-listing-title">Create New Listing</div>
+        <div class="my-listing-info">Product Name</div>
+        <div class="my-listing-info">Product Description</div>
+        <div class="my-listing-info">Category (drop down menu?)</div>
+        <div class="my-listing-info">Price</div>
+        <div class="my-listing-info">Image URL</div>
+      </div>
+    </div>
+  </section>
   <div class = "container">
-    <h4 class="featured-items">Featured Items</h4>
+    <h4 class="featured-items">Your Items For Sale</h4>
       <div class ="feature-container">
-        <%- include('partials/item-template') %>
-        <%- include('partials/item-template') %>
-        <%- include('partials/item-template') %>
-        <%- include('partials/item-template') %>
+        <%- include('partials/user-item-temp.ejs') %>
+        <%- include('partials/user-item-temp.ejs') %>
+        <%- include('partials/user-item-temp.ejs') %>
+        <%- include('partials/user-item-temp.ejs') %>
       </div>
   </div>
 
