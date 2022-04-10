@@ -83,7 +83,7 @@ app.get("/login/:id", (req, res) => {
   // using encrypted cookies
   req.session.user_id = req.params.id;
   // send the user back to home once logged in
-  res.redirect("/");
+  res.redirect("/user");
 });
 
 app.get("/user", (req, res) => {
