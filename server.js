@@ -82,15 +82,15 @@ app.use("/messages", messagesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  const username = req.session.user.name;
-  const admin = req.session.user.admin;
+  // const username = req.session.user.name;
+  // const admin = req.session.user.admin;
 
-  const templateVars = { username, admin };
+  // const templateVars = { username, admin };
 
-  if (req.session.user.admin) {
-    return res.render("user", templateVars);
-  }
-  res.render("index", templateVars);
+  // if (req.session.user.admin) {
+  //   return res.render("user", templateVars);
+  // }
+  res.render("index"/*templateVars*/ );
 });
 
 app.listen(PORT, () => {
