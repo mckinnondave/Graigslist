@@ -34,17 +34,30 @@
 <body>
   <%- include('partials/_header') %>
 
-  <main class = "container">
-    <h1 class ="lrg-banner">Welcome to Graigslist!</h1>
+  <main class="container">
+    <h1 class="lrg-banner">Welcome to Graigslist!</h1>
     <p>
-      Sell your things at home for new and gently used items. Shop sustainably on Graigslist with a growing community in your local city.
+      Sell your things at home for new and gently used items. Shop sustainably on Graigslist with a growing community in
+      your local city.
     </p>
+    <div class="category-container">
+      <div class="category-bar">
+        <div>Art & Handmade</div>
+        <div>Clothing</div>
+        <div>Electronics</div>
+        <div>Furniture</div>
+        <div>Books</div>
+        <div>Video Games</div>
+        <div>Instruments</div>
+        <div>Movies</div>
+      </div>
+    </div>
     <h4 class="featured-items">Featured Items</h2>
-      <div class ="feature-container">
+      <div class="feature-container">
         <%- include('partials/item-template') %>
-        <%- include('partials/item-template') %>
-        <%- include('partials/item-template') %>
-        <%- include('partials/item-template') %>
+          <%- include('partials/item-template') %>
+            <%- include('partials/item-template') %>
+              <%- include('partials/item-template') %>
       </div>
       <div class="item-container"></div>
   </main>
