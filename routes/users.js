@@ -5,24 +5,40 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
-      .then(data => {
+      .then((data) => {
         const users = data.rows;
         res.json({ users });
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
       });
   });
   return router;
 };
+
+// set user cookie when logged in
+app.get("/login/:id", (req, res) => {
+  // using encrypted cookies
+  req.session.user_id = req.params.id;
+  // send the user back to home once logged in
+  res.redirect("/user");
+});
+
+app.get("/user", (req, res) => {
+  res.render("user");
+});
+
+// logout a user
+app.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/urls");
+});
 
 // Browse /users get redirects somewhere
 // Read /users/:id show an idividuals profile
