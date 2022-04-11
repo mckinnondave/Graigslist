@@ -54,18 +54,16 @@
 
 .fa-solid {
   color: rgb(180, 180, 180);
+  transition: .2s;
+  cursor: pointer;
 }
 
 .fa-heart:hover {
-  transition: .3s;
   color: red;
-  cursor: pointer
 }
 
 .fa-envelope:hover {
-  transition: .3s;
   color: rgb(0, 0, 165);
-  cursor: pointer
 }
 
 .product-description {
