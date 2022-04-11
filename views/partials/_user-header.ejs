@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="/">Graigslist</a>
-      <form class="d-flex" action="/search" method="POST" id="search-form">
+      <form class="d-flex" action="/search" method="GET" id="search-form">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -14,12 +14,10 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <button class="btn btn-outline-success btn-new-listing">Create New Listing</button>
           <form action="/logout" method="POST" id="logout-form">
-          <button class="btn btn-outline-danger btn-logout" type="submit">Logout</button>
+            <button class="btn btn-outline-danger btn-logout" type="submit">Logout</button>
           </form>
         </ul>
-        <form action="/logout" method="POST" id="logout-form">
-          <button class="btn btn-outline-danger btn-logout" type="submit">Logout</button>
-  </form>
+        </form>
       </div>
     </div>
   </nav>
