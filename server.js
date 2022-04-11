@@ -85,6 +85,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/listings", (req, res) => {
+  res.render("listings");
+});
+
+app.get("/listing", (req, res) => {
+  res.render("listing")
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

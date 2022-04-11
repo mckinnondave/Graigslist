@@ -5,6 +5,6 @@ $(document).ready(function() {
   $(".btn-new-listing").click(function() {
     $(".post-listing-box").slideToggle("slow")
   })
-  
+
 });
 
