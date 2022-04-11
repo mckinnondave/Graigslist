@@ -3,6 +3,7 @@
   justify-content: space-between;
   height: 350px;
   margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .product-container {
@@ -14,6 +15,7 @@
   width: 23%;
   height: 400px;
   background-color: #f4f4f3;
+  margin-bottom: 1em;
 }
 
 .product-image {
@@ -58,7 +60,7 @@
 
 .fa-solid {
   color: rgb(180, 180, 180);
-  transition: .2s;
+  transition: 0.2s;
   cursor: pointer;
 }
 
@@ -140,9 +142,5 @@
 }
 
 .prod-heart {
-  margin-left: 10px;;
+  margin-left: 10px;
 }
-
-
-
-

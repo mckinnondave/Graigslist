@@ -90,7 +90,7 @@ app.get("/listings", (req, res) => {
 });
 
 app.get("/listing", (req, res) => {
-  res.render("listing")
+  res.render("listing");
 });
 
 app.listen(PORT, () => {

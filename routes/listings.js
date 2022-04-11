@@ -15,7 +15,7 @@ module.exports = (db, dbHelpers) => {
   // get a single listing route, need to modify from lightbnb
   // router.get("/:id", (req, res) => {
   //   db.getAllProperties(req.query, 20)
-  //     .then((properties) => res.send({ properties }))
+  // .then((properties) => res.send({ properties }))
   //     .catch((e) => {
   //       console.error(e);
   //       res.send(e);

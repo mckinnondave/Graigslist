@@ -31,7 +31,7 @@ const getAllListings = (options, db) => {
     FROM listings
     JOIN users ON creator_id = users.id
     ORDER BY name
-    LIMIT 4;
+    LIMIT 16;
   `;
   return db
     .query(getAllListingsQuery, queryParams)
