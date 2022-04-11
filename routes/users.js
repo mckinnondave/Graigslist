@@ -13,7 +13,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
-        res.json({ users });
+        res.render("user");
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
@@ -22,7 +22,5 @@ module.exports = (db) => {
   return router;
 };
 
-router.get("/", (req, res) => {
-  res.render("user");
-});
+
 
