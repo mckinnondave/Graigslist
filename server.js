@@ -8,6 +8,7 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
+const dbHelpers = require("./helpers");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -63,19 +64,16 @@ const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 const searchRoutes = require("./routes/search");
 const listingsRoutes = require("./routes/listings");
-// const listingRoutes = require("./routes/listing");
 const messagesRoutes = require("./routes/messages");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/user", usersRoutes(db));
-app.use("/login", loginRoutes());
+app.use("/user", usersRoutes(db, dbHelpers));
+app.use("/login", loginRoutes(db, dbHelpers));
 app.use("/logout", logoutRoutes());
-app.use("/search", searchRoutes(db));
-app.use("/listings", listingsRoutes(db));
-// app.use("/listing", listingRoutes(db));
-app.use("/messages", messagesRoutes(db));
-
+app.use("/search", searchRoutes(db, dbHelpers));
+app.use("/listings", listingsRoutes(db, dbHelpers));
+app.use("/messages", messagesRoutes(db, dbHelpers));
 
 // Note: mount other resources here, using the same pattern above
 
