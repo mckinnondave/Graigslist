@@ -22,4 +22,10 @@ const getSearchResults = (options)=>{
     .catch((err) => {
       console.log(err.message);
     });
-}
+};
+
+exports.getSearchResults = getSearchResults;
+
+
+
+//get all properties from light bnb
