@@ -18,16 +18,3 @@ module.exports = () => {
   });
   return router;
 };
-
-// set user cookie when logged in
-
-// router.get("/login", (req, res) => {
-//   res.render("user");
-// });
-
-// // logout a user
-// router.post("/logout", (req, res) => {
-//   req.session = null;
-//   res.redirect("/");
-// });
-// };
