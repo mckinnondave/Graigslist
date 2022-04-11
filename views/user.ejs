@@ -35,43 +35,53 @@
 <body>
   <%- include('partials/_user-header') %>
 
-  <div class = "container">
-    <h1 class ="lrg-banner">Hi 'Andy'!</h1>
-  </div>
-  <section class = "container profile-section">
-    <div class ="profile-box">
-      <div class ="profile-pic">Profile Pic</div>
-      <div class="info-box">
-        <div class="user-profile-name">User Name</div>
-        <div class="profile-info">User Email</div>
-        <div class="profile-info">Street Address</div>
-        <div class="profile-info">City, Province</div>
-        <div class="profile-info">Country</div>
-      </div>
+    <div class="container">
+      <h1 class="lrg-banner">Hi 'Andy'!</h1>
     </div>
-    <div class="post-listing-box">
-      <div class="post-listing-form">
-        <div class="my-listing-title">Create New Listing</div>
-        <div class="my-listing-info">Product Name</div>
-        <div class="my-listing-info">Product Description</div>
-        <div class="my-listing-info">Category (drop down menu?)</div>
-        <div class="my-listing-info">Price</div>
-        <div class="my-listing-info">Image URL</div>
+    <section class="container profile-section">
+      <div class="profile-box">
+        <div class="profile-pic">Profile Pic</div>
+        <div class="info-box">
+          <div class="user-profile-name">User Name</div>
+          <div class="profile-info">User Email</div>
+          <div class="profile-info">Street Address</div>
+          <div class="profile-info">City, Province</div>
+          <div class="profile-info">Country</div>
+        </div>
       </div>
-    </div>
-  </section>
-  <div class = "container">
-    <h4 class="featured-items">Your Items For Sale</h4>
-      <div class ="feature-container">
-        <%- include('partials/user-item-temp.ejs') %>
-        <%- include('partials/user-item-temp.ejs') %>
-        <%- include('partials/user-item-temp.ejs') %>
-        <%- include('partials/user-item-temp.ejs') %>
-      </div>
-  </div>
+      <div class="post-listing-box">
+        <form action="/user" method="POST" id="post-form">
+          <div class="post-listing-form">
+            <div class="my-listing-title">Create New Listing</div>
+            <textarea class="my-listing-info prod-name" placeholder="Product Name"></textarea>
+            <div class="cat-price">
+              <textarea class="my-listing-info prod-cat" placeholder="Category"></textarea>
+              <textarea class="my-listing-info prod-price" placeholder="Price"></textarea>
+            </div>
+            <textarea class="my-listing-info prod-img" placeholder="Image URL"></textarea>
+            <textarea class="my-listing-info prod-desc" placeholder="Product Description"></textarea>
+            <div class="submit-btn">
+              <button class="btn btn-outline-danger">Submit</button>
+            </div>
+          </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        </form>
+      </div>
+    </section>
+    <div class="container">
+      <h4 class="featured-items">Your Items For Sale</h4>
+      <div class="feature-container">
+        <%- include('partials/user-item-temp.ejs') %>
+          <%- include('partials/user-item-temp.ejs') %>
+            <%- include('partials/user-item-temp.ejs') %>
+              <%- include('partials/user-item-temp.ejs') %>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>
