@@ -13,6 +13,7 @@
   border-radius: 10px;
   width: 23%;
   height: 400px;
+  background-color: #f4f4f3;
 }
 
 .product-image {
@@ -23,7 +24,8 @@
   border-radius: 10px;
   width: 90%;
   height: 180px;
-  margin-top: 12px
+  margin-top: 12px;
+  background-color: white;
 }
 
 .product-bar {
@@ -41,6 +43,7 @@
   width: 73%;
   height: 100%;
   font-size: smaller;
+  background-color: white;
 }
 
 .product-icons {
@@ -49,7 +52,8 @@
   justify-content: space-between;
   border: solid black;
   height: 100%;
-  width: 25%
+  width: 25%;
+  background-color: white;
 }
 
 .fa-solid {
@@ -72,6 +76,71 @@
   margin-top: 12px;
   height: 130px;
   font-size: 15px;
+  background-color: white;
+}
+
+// Individual Product Listing Style
+
+.main-prod-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.lrg-prod-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black 5px;
+  border-radius: 10px;
+  width: 40%;
+  height: 600px;
+  margin-top: 2em;
+}
+
+.lrg-prod-desc-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: solid black 5px;
+  border-radius: 10px;
+  width: 40%;
+  height: 300px;
+  margin-top: 2em;
+  margin-left: 2em;
+}
+
+.lrg-prod-name {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: large;
+  height: 20%;
+  margin-left: 10px;
+}
+
+.lrg-prod-desc {
+  display: flex;
+  height: 60%;
+  border-bottom: solid black 5px;
+  border-top: solid black 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.like-offer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 20%;
+}
+
+.make-offer-btn {
+  margin-right: 10px;
+}
+
+.prod-heart {
+  margin-left: 10px;;
 }
 
 
