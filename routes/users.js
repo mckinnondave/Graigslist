@@ -10,6 +10,11 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+      res.send({ message: "not logged in" });
+      return;
+    }
     db.query(`SELECT * FROM users;`)
       .then((data) => {
         const users = data.rows;
@@ -22,5 +27,23 @@ module.exports = (db) => {
   return router;
 };
 
+// router.get("/", (req, res) => {
+//     const userId = req.session.userId;
+//     if (!userId) {
+//       res.send({ message: "not logged in" });
+//       return;
+//     }
 
+//     database
+//       .getUserWithId(userId)
+//       .then((user) => {
+//         if (!user) {
+//           res.send({ error: "no user with that id" });
+//           return;
+//         }
+
+//         res.send({ user: { name: user.name, email: user.email, id: userId } });
+//       })
+//       .catch((e) => res.send(e));
+//   });
 
