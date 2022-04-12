@@ -3,27 +3,40 @@
     <div class="container">
       <a class="navbar-brand" href="/">Graigslist</a>
       <form class="d-flex" action="/search" method="get" id="search-form">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          id="search-text"
+        />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent ">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="mail-icon">
-          </li>
+          <li class="mail-icon"></li>
           <li>
             <a class="btn btn-outline-success btn-login" href="/login/1"
-              >Login</a>
+              >Login</a
+            >
           </li>
           <li>
             <a class="btn btn-outline-danger btn-register" href="/login/2"
-              >Register</a>
+              >Register</a
+            >
           </li>
         </ul>
-
       </div>
     </div>
   </nav>

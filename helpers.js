@@ -4,19 +4,17 @@
 // const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
 
-const getSearchResults = (options, db) => {
-  const queryParams = [];
+// Searches database for items where name or description contain all or part of a search query
+const getSearchResults = (name, db) => {
+  const queryParams = [`%${name}%`];
   let getSearchResultsQuery = `
-  SELECT listings.*, users.name as user_name
+  SELECT *
     FROM listings
-    JOIN users ON creator_id = users.id
-    ORDER BY name
-    LIMIT 3;
+    WHERE description iLIKE $1 OR name iLIKE $1
   `;
   return db
     .query(getSearchResultsQuery, queryParams)
     .then((result) => {
-      // console.log(result.rows);
       return result.rows;
     })
     .catch((err) => {
@@ -31,7 +29,7 @@ const getAllListings = (options, db) => {
     FROM listings
     JOIN users ON creator_id = users.id
     ORDER BY name
-    LIMIT 16;
+    LIMIT 4;
   `;
   return db
     .query(getAllListingsQuery, queryParams)
@@ -44,6 +42,51 @@ const getAllListings = (options, db) => {
     });
 };
 
-module.exports = { getSearchResults, getAllListings };
+// Searches database for listing matching an id, and returns it. Used for individual product listing.
+const getSingleListing = (object, db) => {
+  const queryParams = [object.id];
+  console.log("OBJECT", object);
+  let getSingleListingQuery = `
+  SELECT *
+    FROM listings
+    WHERE id = $1;
+  `;
+  return db
+    .query(getSingleListingQuery, queryParams)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const getCategoryListings = (object, db) => {
+  const queryParams = [object.category_slug];
+  console.log("OBJECT", object);
+  let getCategoryListingsQuery = `
+  SELECT *
+    FROM listings
+    JOIN categories
+    ON categories.id = listings.category_id
+    WHERE category_slug = $1;
+  `;
+  return db
+    .query(getCategoryListingsQuery, queryParams)
+    .then((result) => {
+      // console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = {
+  getSearchResults,
+  getAllListings,
+  getSingleListing,
+  getCategoryListings,
+};
 
 //get all properties from light bnb
