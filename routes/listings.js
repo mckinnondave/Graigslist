@@ -12,12 +12,11 @@ module.exports = (db, dbHelpers) => {
 
   // get a single listing route, need to modify from lightbnb
   // router.get("/:id", (req, res) => {
-  //   db.getAllProperties(req.query, 20)
-  // .then((properties) => res.send({ properties }))
-  //     .catch((e) => {
-  //       console.error(e);
-  //       res.send(e);
-  //     });
+  //   const listingParams = req.params;
+  //   dbHelpers.getAllListings(listingParams, db).then((results) => {
+  //     const templateVars = { results: results };
+  //     res.render("listing", templateVars);
+  //   });
   // });
 
   //create new listing route, need to modify from lightbnb
