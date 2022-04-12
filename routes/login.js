@@ -11,10 +11,10 @@ const router = express.Router();
 module.exports = () => {
   router.get("/:id", (req, res) => {
     // using encrypted cookies
-    console.log("hey this is the route");
+    // console.log("hey this is the route");
     req.session.userId = req.params.id;
     // send the user back to home once logged in
-    res.redirect("/user");
+    res.redirect("/user/2");
   });
   return router;
 };
