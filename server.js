@@ -59,7 +59,7 @@ app.use(
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
+const usersRoutes = require("./routes/user");
 const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 const searchRoutes = require("./routes/search");
@@ -90,14 +90,6 @@ app.get("/", (req, res) => {
     res.render("index", templateVars);
   });
 });
-
-// app.get("/listings", (req, res) => {
-//   res.render("listings");
-// });
-
-// app.get("/listing", (req, res) => {
-//   res.render("listing");
-// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
