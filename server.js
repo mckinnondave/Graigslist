@@ -82,7 +82,13 @@ app.use("/messages", messagesRoutes(db, dbHelpers));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const listingParams = req.params;
+  dbHelpers.getAllListings(listingParams, db).then((results) => {
+    // console.log("result", results);
+    // res.send(results);
+    const templateVars = { results: results };
+    res.render("index", templateVars);
+  });
 });
 
 // app.get("/listings", (req, res) => {
