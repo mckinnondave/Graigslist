@@ -8,6 +8,7 @@ $(document).ready(function () {
   $("#search-form").on("submit", function (event) {
     event.preventDefault();
     const searchData = $("#search-text").val();
+    console.log("searchData", searchData);
     const cleanSearchData = searchData.replace(/[^A-Z0-9]+/gi, "+");
     console.log("cleanSearchData", cleanSearchData);
 
@@ -18,7 +19,7 @@ $(document).ready(function () {
     // "/search?term=red+bike"
     $.get(url).then((response) => {
       // once search is returned, do something
-      baseUrl = window.location.origin;
+      const baseUrl = window.location.origin;
       window.location.replace(baseUrl + "/search?name=" + cleanSearchData);
       // res.redirect("/user");
     });

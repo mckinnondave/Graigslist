@@ -4,6 +4,7 @@
 // const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
 
+// Searches database for items where name or description contain all or part of a search query
 const getSearchResults = (name, db) => {
   const queryParams = [`%${name}%`];
   let getSearchResultsQuery = `
@@ -11,13 +12,9 @@ const getSearchResults = (name, db) => {
     FROM listings
     WHERE description iLIKE $1 OR name iLIKE $1
   `;
-
-  //WHERE name LIKE %${$1}%
-
   return db
     .query(getSearchResultsQuery, queryParams)
     .then((result) => {
-      // console.log(result.rows);
       return result.rows;
     })
     .catch((err) => {
@@ -45,6 +42,7 @@ const getAllListings = (options, db) => {
     });
 };
 
+// Searches database for listing matching an id, and returns it. Used for individual product listing.
 const getSingleListing = (object, db) => {
   const queryParams = [object.id];
   console.log("OBJECT", object);
@@ -56,7 +54,6 @@ const getSingleListing = (object, db) => {
   return db
     .query(getSingleListingQuery, queryParams)
     .then((result) => {
-      // console.log("LOOK HERE", result.rows[0]);
       return result.rows;
     })
     .catch((err) => {
@@ -64,6 +61,32 @@ const getSingleListing = (object, db) => {
     });
 };
 
-module.exports = { getSearchResults, getAllListings, getSingleListing };
+const getCategoryListings = (object, db) => {
+  const queryParams = [object.category_slug];
+  console.log("OBJECT", object);
+  let getCategoryListingsQuery = `
+  SELECT *
+    FROM listings
+    JOIN categories
+    ON categories.id = listings.category_id
+    WHERE category_slug = $1;
+  `;
+  return db
+    .query(getCategoryListingsQuery, queryParams)
+    .then((result) => {
+      // console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+module.exports = {
+  getSearchResults,
+  getAllListings,
+  getSingleListing,
+  getCategoryListings,
+};
 
 //get all properties from light bnb

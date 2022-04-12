@@ -17,11 +17,11 @@ module.exports = (db, dbHelpers) => {
       .then((results) => {
         // console.log("req.query", req.query);
         // console.log("req.params", req.params);
-        console.log("results", results);
+        // console.log("results", results);
         // res.send(results);
 
         const templateVars = { results };
-        res.render("listings", templateVars);
+        res.render("search", templateVars);
       })
       .catch((e) => {
         console.error(e);
