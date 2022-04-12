@@ -47,17 +47,28 @@
     <%- include('partials/_user-header') %>
 
     <div class="container">
-      <h1 class="lrg-banner">Hi 'Andy'!</h1>
+      <h1 class="lrg-banner">Hi <%= results.name %>!</h1>
     </div>
     <section class="container profile-section">
       <div class="profile-box">
-        <div class="profile-pic">Profile Pic</div>
+        <div class="profile-pic">
+          <img src="<%= results.avatar_url %>" class="avatar-pic"/>
+        </div>
         <div class="info-box">
-          <div class="user-profile-name">User Name</div>
-          <div class="profile-info">User Email</div>
-          <div class="profile-info">Street Address</div>
-          <div class="profile-info">City, Province</div>
-          <div class="profile-info">Country</div>
+          <div class="user-profile-name"><%= results.name %></div>
+          <div class="profile-info">Email: <%= results.email %></div>
+          <div class="profile-info">
+            <div>Address:</div>
+            <div class="profile-address">
+              <%= results.street_address, %>
+              <%= results.city %>, <%= results.province %>
+              <%= results.country %>
+            </div>
+          </div>
+
+          </div>
+          <div class="profile-info"> </div>
+          <div class="profile-info"></div>
         </div>
       </div>
       <div class="post-listing-box">
@@ -90,10 +101,24 @@
     <div class="container">
       <h4 class="featured-items">Your Items For Sale</h4>
       <div class="feature-container">
-        <%- include('partials/user-item-temp.ejs') %> <%-
-        include('partials/user-item-temp.ejs') %> <%-
-        include('partials/user-item-temp.ejs') %> <%-
-        include('partials/user-item-temp.ejs') %>
+        <% for(let item of userItems) { %>
+        <section class="product-container">
+          <div class="product-image">
+            <img src="<%= item.image_url %>" class="result-image">
+          </div>
+          <div class="product-bar">
+            <div class="product-name"><%= item.name %></div>
+            <div class="price-logo-box">
+              <div class="prod-price">$<%= parseFloat(item.price_in_cents/1000).toFixed(2) %></div>
+              <div class="product-icons">
+                <i class="fa-solid fa-pen-to-square" title="Mark as Sold"></i>
+                <i class="fa-solid fa-trash-can" title="delete"></i>
+              </div>
+            </div>
+          </div>
+          <div class="product-description"><%= item.description %></div>
+        </section>
+        <% } %>
       </div>
     </div>
 
