@@ -5,8 +5,6 @@ module.exports = (db, dbHelpers) => {
   router.get("/", (req, res) => {
     const listingParams = req.params;
     dbHelpers.getAllListings(listingParams, db).then((results) => {
-      // console.log("result", results);
-      // res.send(results);
       const templateVars = { results: results };
       res.render("listings", templateVars);
     });
