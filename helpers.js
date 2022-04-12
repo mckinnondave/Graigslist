@@ -82,11 +82,48 @@ const getCategoryListings = (object, db) => {
     });
 };
 
+const getUserInfo = (object, db) => {
+  const queryParams = [object];
+  console.log("OBJECT", object);
+  let getUserInfoQuery = `
+  SELECT *
+    FROM users
+    WHERE users.id = $1;
+  `;
+  return db
+    .query(getUserInfoQuery, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const getUserItems = (userId, db) => {
+  const queryParams = [userId];
+  console.log("userId", userId);
+  let getUserItemsQuery = `
+  SELECT * FROM listings
+    WHERE creator_id = $1;
+  `;
+  return db
+    .query(getUserItemsQuery, queryParams)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 module.exports = {
   getSearchResults,
   getAllListings,
   getSingleListing,
   getCategoryListings,
+  getUserInfo,
+  getUserItems
 };
 
 //get all properties from light bnb
