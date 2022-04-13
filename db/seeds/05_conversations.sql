@@ -75,5 +75,4 @@ VALUES
     ('73', '40'),
     ('74', '60'),
     ('75', '57');
-
-ALTER TABLE conversations AUTO_INCREMENT = 76;
+ALTER SEQUENCE conversations_id_seq RESTART WITH 76;

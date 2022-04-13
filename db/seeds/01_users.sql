@@ -11,4 +11,4 @@ VALUES
     ('9', 'Barbi Flemming', 'bflemming8@macromedia.com', '9GA2gpbEJvHk', 'true', 'https://robohash.org/exaccusamusaliquam.png?size=500x500&set=set1', 'Sainte-Anne-de-Bellevue', 'Quebec', '62 Lukken Center', 'H9X', 'Canada', '45.4032761', '-73.9503607'),
     ('10', 'Karola Billings', 'kbillings9@soundcloud.com', '59L7yAD8vyoO', 'true', 'https://robohash.org/omnissuntoccaecati.png?size=500x500&set=set1', 'Thessalon', 'Ontario', '59934 Drewry Junction', 'P0T', 'Canada', '46.25006', '-83.5666');
 
-ALTER TABLE users AUTO_INCREMENT = 11;
+ALTER SEQUENCE users_id_seq RESTART WITH 11;
