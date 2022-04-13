@@ -35,7 +35,6 @@ module.exports = (db, dbHelpers) => {
     ])
       .then((results) => {
         const templateVars = { results: results[0], userItems: results[1] };
-        console.log(templateVars);
         res.render("user", templateVars);
       })
       .catch((err) => {
