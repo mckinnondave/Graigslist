@@ -126,6 +126,8 @@
 .cat-price {
   display: flex;
   flex-direction: row;
+  height: 40px;
+  margin-bottom: 5px;
 }
 
 .submit-btn {
@@ -143,7 +145,24 @@ textarea {
   resize: none;
 }
 
-.fa-pen-to-square:hover {
+.input-group {
+  width: 57%;
+  height: 40px;
+}
+
+.input-group-text {
+  background-color: #f4f4f3;
+  padding: 0;
+  height: 100%;
+  padding-right: 5px;
+}
+
+.custom-select {
+  background-color: white;
+  width: 58%;
+}
+
+.fa-circle-check:hover {
   color: green;
 }
 
