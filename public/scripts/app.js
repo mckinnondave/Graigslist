@@ -1,3 +1,8 @@
+/*
+ * Client-side JS logic goes here
+ * jQuery is already loaded
+ */
+
 $(document).ready(function () {
   $(".post-listing-box").hide();
 
