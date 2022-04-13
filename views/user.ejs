@@ -80,8 +80,18 @@
               placeholder="Product Name"
             ></textarea>
             <div class="cat-price">
-              <textarea class="my-listing-info prod-cat" placeholder="Category"></textarea>
-              <textarea class="my-listing-info prod-price-listing" placeholder="Price"></textarea>
+              <select class="my-listing-info prod-cat" placeholder="Category" name="category">
+                <option value="" disabled selected>Category</option>
+                <option value = "1">Art & Handmade</option>
+                <option value = "2">Clothing</option>
+                <option value = "3">Electronics</option>
+                <option value = "4">Furniture</option>
+                <option value = "5">Books</option>
+                <option value = "6">Video Games</option>
+                <option value = "7">Automotive</option>
+                <option value = "8">Movies</option>
+              </select>
+              <textarea class="my-listing-info prod-price-listing" placeholder="Price" name="price"></textarea>
             </div>
             <textarea
               class="my-listing-info prod-img"
@@ -111,8 +121,8 @@
             <div class="price-logo-box">
               <div class="prod-price">$<%= parseFloat(item.price_in_cents/1000).toFixed(2) %></div>
               <div class="product-icons">
-                <i class="fa-solid fa-pen-to-square" title="Mark as Sold"></i>
-                <i class="fa-solid fa-trash-can" title="delete"></i>
+                <i class="fa-solid fa-circle-check" title="Mark as Sold"></i>
+                <i class="fa-solid fa-trash-can" data-id="<%= item.id %>" title="delete"></i>
               </div>
             </div>
           </div>
