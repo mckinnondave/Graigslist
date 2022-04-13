@@ -14,6 +14,7 @@ module.exports = (db, dbHelpers) => {
   // get a single listing route, need to modify from lightbnb
   router.get("/:id", (req, res) => {
     const listingParams = req.params;
+    console.log(req.params);
     dbHelpers.getSingleListing(listingParams, db).then((results) => {
       // console.log("results", results);
       // console.log("listingParams", listingParams);
@@ -50,8 +51,7 @@ module.exports = (db, dbHelpers) => {
 
    // Create New Listing Handler
   router.post("/create", (req, res) => {
-    console.log("request created")
-    console.log(req.body);
+    // console.log(req.body);
     const productName = req.body.productName;
     const category_id = req.body.category;
     const price = (req.body.price)*1000;
@@ -66,7 +66,7 @@ module.exports = (db, dbHelpers) => {
       `;
     db.query(sql, [productName, category_id, price, image_url, description, creator_id])
       .then((result) => {
-        console.log("Results", result.rows)
+        // console.log("Results", result.rows)
         // const templateVars =  result.rows[0]
         // res.render("user", templateVars)
         res.send(result.rows)
@@ -76,6 +76,19 @@ module.exports = (db, dbHelpers) => {
         res.send(e);
       });
   });
+
+  router.post("/delete", (req,res) => {
+    const { dataId } = req.body;
+    const itemQuery = `
+    DELETE FROM listings
+    WHERE id = ${dataId}
+    `
+    db.query(itemQuery)
+    .then(() => {
+      res.send("OK");
+    })
+  })
+
   return router;
 };
 
