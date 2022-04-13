@@ -115,7 +115,7 @@
       <h4 class="featured-items">Your Items For Sale</h4>
       <div class="feature-container">
         <% for(let item of userItems) { %>
-        <section class="product-container">
+        <section class="product-container" id ="product-<%= item.id %>">
           <div class="product-image">
             <img src="<%= item.image_url %>" class="result-image">
           </div>
