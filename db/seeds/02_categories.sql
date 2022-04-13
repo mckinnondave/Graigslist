@@ -9,3 +9,5 @@ VALUES
     ('6', 'Video Games', 'video_games'),
     ('7', 'Automotive', 'automotive'),
     ('8', 'Movies', 'movies');
+
+ALTER TABLE categories AUTO_INCREMENT = 9;

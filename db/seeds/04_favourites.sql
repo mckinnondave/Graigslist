@@ -250,3 +250,5 @@ VALUES
     ('248', '4', '54'),
     ('249', '5', '63'),
     ('250', '6', '7');
+
+ALTER TABLE favourites AUTO_INCREMENT = 251;

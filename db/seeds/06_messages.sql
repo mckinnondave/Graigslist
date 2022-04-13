@@ -250,3 +250,5 @@ VALUES
     ('248', '41', 'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.', '6', '8'),
     ('249', '71', '"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."', '3', '5'),
     ('250', '39', '"Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."', '8', '10');
+
+ALTER TABLE messages AUTO_INCREMENT = 251;
