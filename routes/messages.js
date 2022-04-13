@@ -30,6 +30,19 @@ module.exports = (db, dbHelpers) => {
     });
   });
 
+  router.get("/convo", (req, res) => {
+    if (!req.session.userId) {
+      res.redirect("/login");
+    }
+    const messagesParams = req.session.userId;
+    console.log("messagesPARAMS", messagesParams);
+    dbHelpers.getAllMessagesForConvo(messagesParams, db).then((results) => {
+      // console.log("RESULTS", results);
+      const templateVars = { results: results };
+      res.send({ results });
+    });
+  });
+
   // router.get("/", function (req, res) {
   //   DataHelpers.getTweets((err, tweets) => {
   //     if (err) {
