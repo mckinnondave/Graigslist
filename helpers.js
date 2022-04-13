@@ -105,7 +105,8 @@ const getUserItems = (userId, db) => {
   console.log("userId", userId);
   let getUserItemsQuery = `
   SELECT * FROM listings
-    WHERE creator_id = $1;
+    WHERE creator_id = $1
+    ORDER BY id DESC;
   `;
   return db
     .query(getUserItemsQuery, queryParams)
