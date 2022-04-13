@@ -46,5 +46,8 @@ module.exports = (db, dbHelpers) => {
   //       res.send(e);
   //     });
   // });
+
+  router.post("/delete")
+  
   return router;
 };
