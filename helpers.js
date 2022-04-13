@@ -117,13 +117,35 @@ const getUserItems = (userId, db) => {
     });
 };
 
+const getUserFavourites = (userId, db) => {
+  const queryParams = [userId];
+  console.log("userId", userId);
+  let getUserFavouritesQuery = `
+  SELECT *
+  FROM favourites
+  JOIN listings
+  ON listings.id = favourites.listing_id
+  WHERE user_id = $1
+  `;
+  return db
+    .query(getUserFavouritesQuery, queryParams)
+    .then((result) => {
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+
 module.exports = {
   getSearchResults,
   getAllListings,
   getSingleListing,
   getCategoryListings,
   getUserInfo,
-  getUserItems
+  getUserItems,
+  getUserFavourites
 };
 
 //get all properties from light bnb
