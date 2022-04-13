@@ -13,6 +13,7 @@ module.exports = () => {
     // using encrypted cookies
     console.log("hey this is the route");
     req.session.userId = req.params.id;
+    console.log("userID", req.session.userId)
     // send the user back to home once logged in
     res.redirect("/user");
   });
