@@ -21,15 +21,35 @@ const getSearchResults = (name, db) => {
       console.log(err.message);
     });
 };
+// used to get most favourited items to display on home page
+const getMostLikedListings = (options, db) => {
+  const queryParams = [];
+  let getMostLikedListingsQuery = `
+  SELECT listings.id, name, description, category_id, price_in_cents, image_url, sold, count(favourites.listing_id) as like_count
+  FROM listings
+  JOIN favourites ON listings.id = listing_id
+  GROUP BY listings.id
+  ORDER BY like_count DESC
+  LIMIT 8;
+  `;
+  return db
+    .query(getMostLikedListingsQuery, queryParams)
+    .then((result) => {
+      // console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 
+// used to get all listings for our /listings page
 const getAllListings = (options, db) => {
   const queryParams = [];
   let getAllListingsQuery = `
   SELECT listings.*, users.name as user_name
     FROM listings
-    JOIN users ON creator_id = users.id
-    ORDER BY name
-    LIMIT 4;
+    JOIN users ON creator_id = users.id;
   `;
   return db
     .query(getAllListingsQuery, queryParams)
@@ -106,9 +126,19 @@ const getAllConvos = (userId, db) => {
   const queryParams = [userId];
   console.log("OBJECT", userId);
   let getCategoryListingsQuery = `
-  SELECT * from conversations
-  join messages on conversations.id = messages.conversation_id
-  where conversation_id=1;
+  SELECT distinct
+    conversations.id as conversation_id,
+    users.id as user_id,
+    users.name as user_name,
+    listings.name as listing_name,
+    listings.creator_id as creator_id,
+    messages.sender_id as sender_id,
+    messages.receiver_id as receiver_id
+  FROM conversations
+  INNER JOIN messages ON conversations.id = conversation_id
+  INNER JOIN users ON messages.receiver_id = users.id
+  INNER JOIN listings ON listing_id = listings.id
+  WHERE creator_id = '1' AND sender_id = '1' OR receiver_id = '1';
   `;
   return db
     .query(getCategoryListingsQuery)
@@ -156,6 +186,7 @@ module.exports = {
   getAllMessagesForConvo,
   pushMessage,
   getAllConvos,
+  getMostLikedListings,
 };
 
 //get all properties from light bnb
