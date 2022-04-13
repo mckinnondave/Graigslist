@@ -53,62 +53,16 @@
     <section class="container messages">
       <div class="row">
         <div class="col conversation-list">
-          <article class="conversation">
+          <% for(let result of results) { %>
+          <article class="conversation" id="<%= result.conversation_id %>">
             <div class="conversation-title">
-              <a href="#">And Staring Pancho Villa as Himself</a>
+              <a href="#"><%= result.listing_name %></a>
             </div>
             <div class="conversation-recipient">
-              <a href="#">Between you and Monty Czaple (userid 3)</a>
+              <a href="#">Between you and <%= result.user_name %></a>
             </div>
           </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
-          <article class="conversation">
-            <div class="conversation-title"><a href="#">Item Name Here</a></div>
-            <div class="conversation-recipient">
-              <a href="#">Between you and UserName</a>
-            </div>
-          </article>
+          <% } %>
         </div>
         <div class="col messages">
           <div class="compose-message">
