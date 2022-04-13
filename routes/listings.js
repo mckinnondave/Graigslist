@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+
+
 module.exports = (db, dbHelpers) => {
+
   router.get("/", (req, res) => {
     const listingParams = req.params;
     dbHelpers.getAllListings(listingParams, db).then((results) => {
@@ -47,7 +50,33 @@ module.exports = (db, dbHelpers) => {
   //     });
   // });
 
-  router.post("/delete")
-  
+   // Create New Listing Handler
+  router.post("/create", (req, res) => {
+    console.log("request created")
+    console.log(req.body);
+    const productName = req.body.productName;
+    const category = req.body.category;
+    const price = req.body.price;
+    const image = req.body.image_url;
+    const description = req.body.description;
+    const creatorId = req.session.userID;
+    const sql = `
+      INSERT INTO listings (name, category_id, price_in_cents, image_url, description, creator_id)
+      VALUES ($1,$2,$3,$4,$5,$6)
+      RETURNING *;
+      `;
+    db.query(sql, [productName, category_id, price, image, description, creator_id])
+      .then((result) => {
+        console.log("Results", result.rows)
+        // const templateVars =  result.rows[0]
+        // res.render("user", templateVars)
+        res.send(result.rows)
+      })
+      .catch((e) => {
+        console.error(e);
+        res.send(e);
+      });
+  });
   return router;
 };
+

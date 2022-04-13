@@ -72,11 +72,12 @@
         </div>
       </div>
       <div class="post-listing-box">
-        <form action="/user" method="POST" id="post-form">
+        <form action="/listings/create" method="post" id="post-form">
           <div class="post-listing-form">
             <div class="my-listing-title">Create New Listing</div>
             <textarea
-              class="my-listing-info prod-name"
+              id="my-listing-info-prod-name"
+              name="productName"
               placeholder="Product Name"
             ></textarea>
             <div class="cat-price">
@@ -96,10 +97,12 @@
             <textarea
               class="my-listing-info prod-img"
               placeholder="Image URL"
+              name="image"
             ></textarea>
             <textarea
               class="my-listing-info prod-desc"
               placeholder="Product Description"
+              name="description"
             ></textarea>
             <div class="submit-btn">
               <button class="btn btn-outline-danger">Submit</button>
