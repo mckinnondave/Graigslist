@@ -24,4 +24,10 @@ $(document).ready(function () {
       // res.redirect("/user");
     });
   });
+
+  $(".fa-trash-can").click(function() {
+    event.preventDefault();
+
+  })
+
 });
