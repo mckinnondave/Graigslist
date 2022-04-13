@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-
-
 module.exports = (db, dbHelpers) => {
 
   router.get("/", (req, res) => {
@@ -55,17 +53,18 @@ module.exports = (db, dbHelpers) => {
     console.log("request created")
     console.log(req.body);
     const productName = req.body.productName;
-    const category = req.body.category;
-    const price = req.body.price;
-    const image = req.body.image_url;
+    const category_id = req.body.category;
+    const price = (req.body.price)*1000;
+    const image_url = req.body.image_url;
     const description = req.body.description;
-    const creatorId = req.session.userID;
+    const creator_id = req.session.userId;
+// console.log("REQSESS", req.session);
     const sql = `
       INSERT INTO listings (name, category_id, price_in_cents, image_url, description, creator_id)
       VALUES ($1,$2,$3,$4,$5,$6)
       RETURNING *;
       `;
-    db.query(sql, [productName, category_id, price, image, description, creator_id])
+    db.query(sql, [productName, category_id, price, image_url, description, creator_id])
       .then((result) => {
         console.log("Results", result.rows)
         // const templateVars =  result.rows[0]
