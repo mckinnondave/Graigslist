@@ -132,6 +132,28 @@
           <div class="product-description"><%= item.description %></div>
         </section>
         <% } %>
+      <div class="container">
+        <h4 class="featured-items">Your Favourites</h4>
+        <div class="feature-container">
+          <% for(let item of userFavourites) { %>
+          <section class="product-container">
+            <div class="product-image">
+              <img src="<%= item.image_url %>" class="result-image">
+            </div>
+            <div class="product-bar">
+              <div class="product-name"><%= item.name %></div>
+              <div class="price-logo-box">
+                <div class="prod-price">$<%= parseFloat(item.price_in_cents/1000).toFixed(2) %></div>
+                <div class="product-icons">
+                  <i class="fa-solid fa-heart" title="favourite"></i>
+                  <i class="fa-solid fa-trash-can" data-id="<%= item.id %>" title="delete"></i>
+                </div>
+              </div>
+            </div>
+            <div class="product-description"><%= item.description %></div>
+          </section>
+          <% } %>
+        </div>
       </div>
     </div>
 
