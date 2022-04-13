@@ -3,6 +3,8 @@
  * jQuery is already loaded
  */
 
+// const { load } = require("sass");
+
 // const getAllMessagesForConvo = module.imports;
 
 $(document).ready(function () {
@@ -38,7 +40,7 @@ $(document).ready(function () {
   const loadMessages = function () {
     $.ajax("/messages/list", { method: "GET" }).then((messagesData) => {
       // console.log("Success: ", morePostsHtml);
-      console.log("messageData", messagesData);
+      // console.log("messageData", messagesData);
       $(".messages").append(renderMessages(messagesData));
     });
   };
@@ -78,6 +80,38 @@ $(document).ready(function () {
       $("#message-text").focus();
     });
   });
+  $("#message-form").on("click", function (event) {});
+
+  $(function () {
+    $(".conversation").click(function () {
+      const thisId = $(this).attr("id"); //need to figure out how to pass this id to my /convo route so that i can load jus tthe messages related to this convo.
+      // alert($(this).attr("id"));
+      $.ajax("/messages/convo/", { method: "GET" }).then((messagesData) => {
+        // console.log("Success: ", morePostsHtml);
+        // console.log("messageData", messagesData);
+        // console.log("SOMETHINGS", renderMessages(thisId));
+        $("#message-list").empty();
+        $(".messages").append(renderMessages(thisId));
+      });
+      // $("#message-list").empty();
+      // getAllMessagesForConvo(this.results, thisId);
+      // console.log("LOADMESSAGES", loadMessages());
+      // const element = "#secret_" + id;
+      // $(element).show();
+    });
+  });
+
+  // const loadConvoMessages = function () {
+  //   $.ajax("/messages/convo", { method: "GET" }).then((messagesData) => {
+  //     // console.log("Success: ", morePostsHtml);
+  //     // console.log("messageData", messagesData);
+  //     $("#message-list").empty();
+  //     $(".messages").append(renderMessages(messagesData));
+  //   });
+  // };
+  // $(".conversation").click(function () {
+  //   alert($(this).attr("id"));
+  // });
   // Load all the tweets after the document has loaded
   loadMessages();
 });
