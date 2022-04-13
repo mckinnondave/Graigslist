@@ -5,10 +5,11 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+const { render } = require("ejs");
 const express = require("express");
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, dbHelpers) => {
   router.get("/", (req, res) => {
     const userId = req.session.userId;
     if (!userId) {

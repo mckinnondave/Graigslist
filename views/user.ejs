@@ -61,11 +61,11 @@
         </div>
       </div>
       <div class="post-listing-box">
-        <form action="/user" method="POST" id="post-form">
+        <form action="/listings/create" method="post" id="post-form">
           <div class="post-listing-form">
             <div class="my-listing-title">Create New Listing</div>
             <textarea
-              class="my-listing-info prod-name"
+              id="my-listing-info-prod-name"
               placeholder="Product Name"
             ></textarea>
             <div class="cat-price">
@@ -90,10 +90,8 @@
     <div class="container">
       <h4 class="featured-items">Your Items For Sale</h4>
       <div class="feature-container">
-        <%- include('partials/user-item-temp.ejs') %> <%-
-        include('partials/user-item-temp.ejs') %> <%-
-        include('partials/user-item-temp.ejs') %> <%-
-        include('partials/user-item-temp.ejs') %>
+        <!-- Put Result Loop -->
+        <!--End Result Loop-->
       </div>
     </div>
 

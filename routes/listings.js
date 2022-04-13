@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+
+
 module.exports = (db, dbHelpers) => {
+
   router.get("/", (req, res) => {
     const listingParams = req.params;
     dbHelpers.getAllListings(listingParams, db).then((results) => {
@@ -46,5 +49,27 @@ module.exports = (db, dbHelpers) => {
   //       res.send(e);
   //     });
   // });
+
+   // Create New Listing Handler
+  router.post("/create", (req, res) => {
+    console.log("request created")
+    console.log(req.body);
+    const { name, price, image } = req.body;
+    // const sql = `
+    //   INSERT INTO listings (name, description, category_id, price_in_cents, image_url, sold, creator_id)
+    //   VALUES ($1,$2,$3,$4,$5,$6,$7)
+    //   RETURNING *;
+    //   `;
+    // db.query(sql, [])
+    //   .then((results) => {
+    //     // const templateVars = { results }
+    //     // res.render("/user", templateVars)
+    //   })
+    //   .catch((e) => {
+    //     console.error(e);
+    //     res.send(e);
+    //   });
+  });
   return router;
 };
+
