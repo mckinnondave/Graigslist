@@ -30,6 +30,7 @@ module.exports = (db, dbHelpers) => {
     // console.log("this is the search route speaking");
     // res.redirect("/user");
   });
+
   return router;
 };
 
