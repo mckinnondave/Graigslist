@@ -63,9 +63,10 @@
               <a href="#"><%= result.listing_name %></a>
             </div>
             <div class="conversation-recipient">
-
-                <a href="#">Between <%= result.receiver_name %> and <%= result.sender_name %></a>
-
+              <a href="#"
+                >Between <%= result.receiver_name %> and <%= result.sender_name
+                %></a
+              >
             </div>
           </article>
           <% } %>
@@ -77,7 +78,7 @@
               <textarea
                 name="text"
                 id="message-text"
-                placeholder="Send the buyer a new message"
+                placeholder="Send a new message"
                 required
                 class="new-message"
               ></textarea>
