@@ -24,7 +24,7 @@ const createNewListing = function (data) {
 };
 
 $(document).ready(function () {
-  // $(".post-listing-box").hide();
+  $(".post-listing-box").hide();
 
   $("form").on("submit", function (event) {
     event.preventDefault();
@@ -96,7 +96,7 @@ $(document).ready(function () {
   })
 
   $(".fa-circle-check").click(function(event) {
-  //
+  
   $(".fa-circle-check").click(function (event) {
     event.preventDefault();
     const dataId2 = $(this).attr("data-id2");
