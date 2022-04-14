@@ -44,29 +44,51 @@
   </head>
 
   <body>
-    <% if (!userObj) { %>
-    <%- include('partials/_header') %>
-    <% } else { %>
-    <%- include('partials/_user-header') %>
-    <% } %>
+    <% if (!userObj) { %> <%- include('partials/_header') %> <% } else { %> <%-
+    include('partials/_user-header') %> <% } %>
 
     <div class="container main-prod-container">
-      <div class="lrg-prod-img"><img src="<%= results.image_url %>" class ="lrg-img" /></div>
+      <div class="lrg-prod-img">
+        <img src="<%= results.image_url %>" class="lrg-img" />
+      </div>
       <div class="lrg-prod-desc-box">
         <div class="lrg-prod-name"><%= results.name %></div>
-        <div class="lrg-prod-desc"><%= results.description %></div>
         <div class="like-offer">
           <div class="lrg-prod-price">
-            <div class ="lrg-price">$<%= parseFloat(results.price_in_cents/1000).toFixed(2) %></div>
+            <div class="lrg-price">
+              $<%= parseFloat(results.price_in_cents/1000).toFixed(2) %>
+            </div>
             <i class="fa-solid fa-heart fa-xl prod-heart"></i>
           </div>
           <% if (!results.sold) { %>
-          <button class="btn btn-outline-danger make-offer-btn btn-sm">
-            Make An Offer
-          </button>
+          <!-- <button class="btn btn-outline-danger make-offer-btn btn-sm"> -->
+          <!-- Make An Offer -->
+          <!-- </button> -->
           <% } else { %>
-            <div class="lrg-sold">Sold!</div>
+          <div class="lrg-sold">Sold!</div>
           <% } %>
+        </div>
+        <div class="lrg-prod-desc"><%= results.description %></div>
+        <div class="compose-message">
+          <div id="message-errors"></div>
+          <form id="message-form" class="form-inline">
+            <textarea
+              name="text"
+              id="message-text"
+              placeholder="Make an offer to get started"
+              required
+              class="new-message"
+            ></textarea>
+            <input type="hidden" name="conversation_id" />
+            <input type="hidden" name="receiver_id" />
+            <button
+              type="submit"
+              id="message-submit-button"
+              class="submit-button"
+            >
+              Send
+            </button>
+          </form>
         </div>
       </div>
     </div>
