@@ -25,15 +25,17 @@ module.exports = (db) => {
   });
 
   router.post("/delete", (req, res) => {
-    const { dataId } = req.body;
-    console.log("DELETE LISTING ID", dataId)
+    const userId = req.session.userId;
+    const listingId = req.body.listingId;
+    console.log("DELETE LISTING ID", listingId, "USER ID", userId)
     const sql = `DELETE
-    FROM listings
-    WHERE id = ${dataId}
+    FROM favourites
+    WHERE user_id = $1 AND listing_id = $2
+    RETURNING *;
     `
-    db.query(sql)
-    .then(() => {
-      res.send("Ok")
+    db.query(sql, [userId, listingId])
+    .then((data) => {
+      res.send(data.rows);
     })
     .catch((e) => {
       console.error(e);
