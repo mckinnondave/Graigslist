@@ -26,7 +26,7 @@ const createNewListing = function (data) {
 $(document).ready(function () {
   $(".post-listing-box").hide();
 
-  $("form").on("submit", function (event) {
+  $("#post-form").on("submit", function (event) {
     event.preventDefault();
     console.log("111");
     console.log($(this).serialize());
