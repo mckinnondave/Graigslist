@@ -4,10 +4,11 @@ const router = express.Router();
 module.exports = (db, dbHelpers) => {
 
   router.get("/", (req, res) => {
-    const listingParams = req.params;
+    const listingParams = req.session.userId;
     const userObj = req.session.userId
     dbHelpers.getAllListings(listingParams, db).then((results) => {
       const templateVars = { results: results, userObj };
+      console.log("TEMPLATEVARS",templateVars)
       res.render("listings", templateVars);
     });
   });
