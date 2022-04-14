@@ -3,14 +3,17 @@
 // const { Pool } = require("pg");
 // const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
-
+// const {userObj} = require('./routes/search');
+  // const userObj = 2;
 // Searches database for items where name or description contain all or part of a search query
-const getSearchResults = (name, db) => {
-  const queryParams = [`%${name}%`];
+const getSearchResults = (name, db, userObj) => {
+  // console.log("DOCUMENT", document)
+
+  const queryParams = [`%${name}%`, userObj];
   let getSearchResultsQuery = `
-  SELECT *
-    FROM listings
-    WHERE description iLIKE $1 OR name iLIKE $1
+  SELECT *, EXISTS (SELECT * from favourites WHERE listing_id = listings.id and user_id = $2 ) as favourite
+  FROM listings
+  WHERE description iLIKE $1 OR name iLIKE $1;
   `;
   return db
     .query(getSearchResultsQuery, queryParams)
@@ -45,13 +48,13 @@ const getMostLikedListings = (options, db) => {
 
 // used to get all listings for our /listings page
 const getAllListings = (options, db) => {
-  const queryParams = [];
+  const queryParams = [options];
   let getAllListingsQuery = `
-  SELECT listings.*, users.name as user_name
+  SELECT listings.*, users.name as user_name, EXISTS (SELECT * from favourites WHERE listing_id = listings.id and user_id = $1 ) as favourite
     FROM listings
     JOIN users ON creator_id = users.id
     ORDER BY listings.id
-    LIMIT 24;
+    ;
   `;
   return db
     .query(getAllListingsQuery, queryParams)
@@ -258,4 +261,7 @@ module.exports = {
   getMostLikedListings,
 };
 
-//get all properties from light bnb
+// SELECT *,
+// EXISTS (SELECT * from favourites WHERE listing_id = listings.id and user_id = 1 ) as favourite
+//   FROM listings
+//   WHERE description 'pancho' OR name iLIKE 'pancho';
