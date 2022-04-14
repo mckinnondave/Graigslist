@@ -60,7 +60,19 @@ $(document).ready(function () {
     });
   });
 
-
+  // 
+  $(".fa-circle-check").click(function(event) {
+    event.preventDefault();
+    const dataId2 =$(this).attr("data-id2")
+    $.ajax({
+      method: "POST",
+      url: "/listings/sold",
+      data: { dataId2 }
+    }).then(() => {
+      const val = $(`#product-${ dataId2 } .prod-price`).text("Sold!").addClass("prod-price-sold")
+      console.log(val);
+    })
+  })
 
   $(".btn-new-listing").click(function () {
     $(".post-listing-box").slideToggle("slow");
