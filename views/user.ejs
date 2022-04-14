@@ -124,7 +124,9 @@
             <img src="<%= item.image_url %>" class="result-image">
           </div>
           <div class="product-bar">
-            <div class="product-name"><%= item.name %></div>
+            <div class="product-name"><a class="name-link cat-link" href="../listings/<%= item.id %>"
+              ><%= item.name %></a
+            ></div>
             <div class="price-logo-box">
               <% if (!item.sold) { %>
               <div class="prod-price">$<%= parseFloat(item.price_in_cents/1000).toFixed(2) %></div>
