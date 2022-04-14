@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
+
   router.post("/", (req, res) => {
     console.log("FAVOURITES REQ BODY", req.body)
     const userId = req.session.userId;
