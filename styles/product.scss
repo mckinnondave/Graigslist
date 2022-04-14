@@ -97,7 +97,9 @@
 }
 
 @keyframes pulsate {
-  50%{ stroke-width:5px }
+  50% {
+    stroke-width: 5px;
+  }
 }
 
 .fa-solid {
@@ -112,6 +114,14 @@
 
 .fa-envelope:hover {
   color: rgb(0, 0, 165);
+}
+
+.fa-user:hover {
+  color: rgb(0, 140, 165);
+}
+
+.right-nav i {
+  padding-right: 20px;
 }
 
 .product-description {
@@ -216,5 +226,3 @@
   height: 50%;
   margin-right: 10px;
 }
-
-
