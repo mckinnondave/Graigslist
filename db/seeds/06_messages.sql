@@ -7,7 +7,7 @@ VALUES
     ('5', '1', 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', '1', '2'),
     ('6', '1', '"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus."', '2', '1'),
     ('7', '1', '"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti."', '1', '2'),
-    ('8', '1', '"Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."', '2', '1');
+    ('8', '1', '"Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."', '2', '1'),
     ('9', '3', '"Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."', '10', '2'),
     ('10', '3', 'Phasellus in felis. Donec semper sapien a libero. Nam dui.', '4', '3'),
     ('11', '3', '"Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl."', '1', '2'),
