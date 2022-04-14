@@ -24,12 +24,13 @@ const createNewListing = function (data) {
 };
 
 $(document).ready(function () {
-  $(".post-listing-box").hide();
+  // $(".post-listing-box").hide();
 
   $("form").on("submit", function (event) {
     event.preventDefault();
     console.log("111");
     console.log($(this).serialize());
+    this.reset;
     $.ajax({
       method: "POST",
       url: "/listings/create",
@@ -38,6 +39,7 @@ $(document).ready(function () {
       .then((data) => {
         console.log("DATA", data);
         $(".feature-container").prepend(createNewListing(data[0]));
+        this.reset
       })
       .catch((e) => {
         console.log(e);
