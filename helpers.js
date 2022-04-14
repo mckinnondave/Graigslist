@@ -101,14 +101,14 @@ const getCategoryListings = (object, db) => {
       console.log(err.message);
     });
 };
-const getAllMessagesForConvo = (object, db) => {
-  const queryParams = [object.conversation_id];
-  console.log("OBJECT", object);
+const getAllMessagesForConvo = (conversationId, db) => {
+  const queryParams = [conversationId];
+  console.log("conversationId", conversationId);
   let getCategoryListingsQuery = `
   SELECT *
     FROM messages
-    JOIN conversations ON conversations_id = conversations.id
-    WHERE conversations_id = $1
+    JOIN conversations ON conversation_id = conversations.id
+    WHERE conversation_id = $1
     ORDER BY messages.id DESC;
   `;
   return db
@@ -124,24 +124,31 @@ const getAllMessagesForConvo = (object, db) => {
 
 const getAllConvos = (userId, db) => {
   const queryParams = [userId];
-  console.log("OBJECT", userId);
-  let getCategoryListingsQuery = `
-  SELECT distinct
-    conversations.id as conversation_id,
-    users.id as user_id,
-    users.name as user_name,
-    listings.name as listing_name,
-    listings.creator_id as creator_id,
-    messages.sender_id as sender_id,
-    messages.receiver_id as receiver_id
-  FROM conversations
-  INNER JOIN messages ON conversations.id = conversation_id
-  INNER JOIN users ON messages.receiver_id = users.id
-  INNER JOIN listings ON listing_id = listings.id
-  WHERE creator_id = '1' AND sender_id = '1' OR receiver_id = '1';
+  console.log("USERID", userId);
+  let getAllConvosQuery = `
+
+select distinct on (conversations.id)
+conversations.id as conversation_id,
+listings.name as listing_name,
+listings.creator_id as creator_id,
+messages.sender_id as sender_id,
+messages.receiver_id as receiver_id,
+a.name as sender_name,
+b.name as receiver_name
+from conversations
+join messages on conversations.id = conversation_id
+JOIN users a ON messages.sender_id = a.id
+JOIN users b ON messages.receiver_id = b.id
+JOIN listings ON listing_id = listings.id
+where sender_id = $1 or receiver_id = $1
+group by conversations.id, messages.sender_id, messages.receiver_id, a.name, b.name, listings.name, listings.creator_id
+ORDER BY conversation_id;
+
+
+
   `;
   return db
-    .query(getCategoryListingsQuery)
+    .query(getAllConvosQuery, queryParams)
     .then((result) => {
       console.log(result.rows);
       return result.rows;
