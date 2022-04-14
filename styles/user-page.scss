@@ -1,3 +1,6 @@
+$main-color: #f4f4f3;
+$border-color: #b4b4b4;
+
 .mail-icon {
   display: flex;
   align-items: center;
@@ -14,7 +17,7 @@
 }
 
 .profile-box {
-  background-color: #f4f4f3;
+  background-color: $main-color;
   display: flex;
   align-items: center;
   border: solid black 5px;
@@ -69,7 +72,7 @@
 };
 
 .post-listing-box {
-  background-color: #f4f4f3;
+  background-color: $main-color;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,6 +144,16 @@
   height: 25%;
 }
 
+.prod-cat {
+  width: 50%;
+}
+
+#my-listing-info-prod-name {
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 textarea {
   resize: none;
 }
@@ -151,7 +164,7 @@ textarea {
 }
 
 .input-group-text {
-  background-color: #f4f4f3;
+  background-color: $main-color;
   padding: 0;
   height: 100%;
   padding-right: 5px;

@@ -84,6 +84,22 @@
   background-color: white;
 }
 
+.prod-price-sold {
+  color: rgb(255, 56, 56);
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  border-bottom: solid black;
+  background-color: white;
+}
+
+@keyframes pulsate {
+  50%{ stroke-width:5px }
+}
+
 .fa-solid {
   color: rgb(180, 180, 180);
   transition: 0.2s;
@@ -163,6 +179,14 @@
   border-top: solid black 5px;
   margin-left: 10px;
   margin-right: 10px;
+  overflow: auto;
+}
+
+.lrg-prod-price {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin-left: 10px;
 }
 
 .like-offer {
@@ -178,5 +202,19 @@
 }
 
 .prod-heart {
-  margin-left: 10px;
+  margin-left: 14px;
+  margin-top: 14px;
 }
+
+.lrg-sold {
+  color: rgb(255, 56, 56);
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  margin-right: 10px;
+}
+
+
