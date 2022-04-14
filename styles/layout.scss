@@ -85,7 +85,6 @@ Styling for the messages list goes below
 
 // new message form
 .new-message {
-  width: 75%;
   height: min-content;
   border: 2px solid black;
   border-radius: 25px;
@@ -93,6 +92,7 @@ Styling for the messages list goes below
   text-align: left;
   vertical-align: middle;
   padding-left: 20px;
+  width: 78.5%;
 }
 .submit-button {
   background-color: blue;
