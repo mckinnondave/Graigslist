@@ -251,7 +251,7 @@ module.exports = {
   getCategoryListings,
   getUserInfo,
   getUserItems,
-  getUserFavourites
+  getUserFavourites,
   getAllMessagesForConvo,
   pushMessage,
   getAllConvos,
