@@ -56,6 +56,17 @@ nav {
   cursor: pointer
 }
 
+// Footer
+.p-3 {
+  margin-top: 40px;
+  background-color: $main-color !important;
+  border-top: solid $border-color 1px;
+}
+
+.text-dark {
+  text-decoration: none;
+}
+
 
 // font-family: 'Bungee', cursive;
 // font-family: 'Oxygen', sans-serif;

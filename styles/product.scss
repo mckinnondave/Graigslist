@@ -1,9 +1,17 @@
 .feature-container {
-  display: flex;
-  height: 350px;
-  margin-bottom: 15px;
+  height: auto;
   flex-wrap: wrap;
+  --gap: 2%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
+  width: calc(100% + var(--gap));
 }
+
+.feature-container > * {
+  margin: var(--gap) 0 0 var(--gap);
+}
+
 
 .product-container {
   display: flex;
@@ -15,7 +23,8 @@
   height: 465px;
   background-color: #f4f4f3;
   margin-bottom: 1em;
-  margin-right: 2%;
+  margin-top: 0;
+  // margin-right: 2%;
 }
 
 .product-image {
