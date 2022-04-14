@@ -140,7 +140,7 @@
         <h4 class="featured-items">Your Favourites</h4>
         <div class="feature-container">
           <% for(let item of userFavourites) { %>
-          <section class="product-container">
+          <section class="product-container" id="favourite-<%= item.id%>">
             <div class="product-image">
               <img src="<%= item.image_url %>" class="result-image">
             </div>
@@ -149,8 +149,7 @@
               <div class="price-logo-box">
                 <div class="prod-price">$<%= parseFloat(item.price_in_cents/1000).toFixed(2) %></div>
                 <div class="product-icons">
-                  <i class="fa-solid fa-heart" data-id="<%= item.id %>" title="favourite"></i>
-                  <i class="fa-solid fa-trash-can" data-id="<%= item.id %>" title="delete"></i>
+                  <i class="fa-solid fa-remove" data-id2="<%= item.id %>"></i>
                 </div>
               </div>
             </div>
