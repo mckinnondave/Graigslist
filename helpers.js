@@ -187,6 +187,37 @@ const pushMessage = (message, db) => {
     });
 };
 
+const makeAnOfferPush = (message, db) => {
+  const queryParams = [
+    message.listing_id,
+    message.body,
+    message.sender_id,
+    message.receiver_id,
+  ];
+  // console.log("MESSAGE", message);
+  // console.log("queryParams", queryParams);
+  let makeAnOfferPushQuery = `
+    INSERT INTO conversations
+      (listing_id)
+    VALUES
+      ($1)
+    RETURNING conversations.id as conversation_id;
+    INSERT INTO messages
+      (conversation_id,body,sender_id,receiver_id)
+    VALUES
+      (conversation_id, $2, $3, $4);
+  `;
+  return db
+    .query(makeAnOfferPushQuery, queryParams)
+    .then((result) => {
+      console.log("RESULT ROWS", result.rows);
+      return;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 const getUserInfo = (object, db) => {
   const queryParams = [object];
   console.log("OBJECT", object);
@@ -234,6 +265,7 @@ module.exports = {
   pushMessage,
   getAllConvos,
   getMostLikedListings,
+  makeAnOfferPush,
 };
 
 //get all properties from light bnb

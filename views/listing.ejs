@@ -79,8 +79,13 @@
               required
               class="new-message"
             ></textarea>
-            <input type="hidden" name="conversation_id" />
-            <input type="hidden" name="receiver_id" />
+            <input type="hidden" name="listing_id" value="<%= results.id %>" />
+            <input
+              type="hidden"
+              name="receiver_id"
+              value="<%= results.creator_id %>"
+            />
+            <input type="hidden" name="sender_id" value="<%= userObj %>" />
             <button
               type="submit"
               id="message-submit-button"

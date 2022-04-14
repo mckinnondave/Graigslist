@@ -39,8 +39,6 @@ $(document).ready(function () {
     }
   };
 
-  // const loadMessages = function () {
-  // };
   const loadMessages = function () {
     $(".conversation:first-child").trigger("click");
     // $.ajax("/messages/list", { method: "GET" }).then((messagesData) => {
@@ -51,30 +49,33 @@ $(document).ready(function () {
   // Prevent page refresh on submit of tweet form
   // Check if new tweet form is empty or over character limit
   // Display errors if true, hide when valid input is submitted
+  // console.log("USEROBJS", userObj[0].userId);
   $("#message-form").on("submit", function (event) {
-    event.preventDefault();
-    const messageData = $("#message-text").val();
-    if (messageData === "" || messageData === null) {
-      $("#message-errors")
-        .html("Your message is empty, please add some text!")
-        .slideDown("slow")
-        .css("display", "block");
-    } else {
-      $("#message-errors").slideUp("slow");
+    if (window.location.pathname === `/messages`) {
+      event.preventDefault();
     }
-
-    // On form submission serialize the data and send it to /messages
-    // Then empty the message list and reload the messages in reverse chronological order
-    // Reset the form and focus the curser back in there
+    const messageData = $("#message-text").val();
     const data = $("#message-form").serialize();
-    $.post("/messages/", data).then(() => {
-      $("#message-list").empty();
-      newFunction($(".conversation.selected"));
-      $("#message-form").trigger("reset");
-      $("#message-text").focus();
-    });
+
+    // SO CLOSE HERE>
+    if (window.location.pathname === `/messages`) {
+      $.post("/messages/", data).then(() => {
+        $("#message-list").empty();
+        newFunction($(".conversation.selected"));
+        $("#message-form").trigger("reset");
+        $("#message-text").focus();
+      });
+    } else {
+      $.post("/listings/:id", data).then(() => {
+        // console.log("FANCY STUFF", makeAnOfferPush(data, db));
+        // makeAnOfferPush(data, db);
+        // window.location.pathname = "/messages/";
+      });
+    }
   });
-  // $("#message-form").on("click", function (event) {});
+  // } else {
+  //   // sdfsdf
+  // }
 
   const newFunction = (element) => {
     const thisId = $(element).attr("id");
