@@ -89,6 +89,20 @@ module.exports = (db, dbHelpers) => {
     })
   })
 
+  router.post("/sold", (req, res) => {
+    const { dataId2 } = req.body;
+    console.log(dataId2);
+    const dataQuery = `
+    UPDATE listings
+    SET sold = TRUE
+    WHERE id = ${dataId2}
+    `
+    db.query(dataQuery)
+    .then(() => {
+      res.send("OK");
+    })
+  })
+
   return router;
 };
 
