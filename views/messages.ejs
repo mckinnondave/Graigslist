@@ -45,7 +45,7 @@
   </head>
 
   <body>
-    <%- include('partials/_user-header') %>
+    <%- include('partials/_logged-in-header') %>
 
     <div class="container">
       <h1 class="lrg-banner">Hi 'Andy'!</h1>
@@ -83,13 +83,14 @@
               ></textarea>
               <input type="hidden" name="conversation_id" />
               <input type="hidden" name="receiver_id" />
-              <button
+              <!-- <button
                 type="submit"
                 id="message-submit-button"
                 class="submit-button"
               >
                 Send
-              </button>
+              </button> -->
+              <button id="message-submit-button" class="btn btn-outline-success btn-new-listing submit-button">Send</button>
             </form>
           </div>
         </div>
