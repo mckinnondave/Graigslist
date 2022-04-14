@@ -17,7 +17,7 @@ module.exports = (db, dbHelpers) => {
       .then((results) => {
         // console.log("req.query", req.query);
         // console.log("req.params", req.params);
-        // console.log("results", results);
+        console.log("results", results);
         // res.send(results);
 
         const templateVars = { results };
