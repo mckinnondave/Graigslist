@@ -40,6 +40,7 @@ module.exports = (db, dbHelpers) => {
         const templateVars = {
           results: results[0],
           userItems: results[1],
+          favouriteItems: results[2], 
           userObj,
         };
         res.render("user", templateVars);
