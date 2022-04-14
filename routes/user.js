@@ -17,25 +17,30 @@ module.exports = (db, dbHelpers) => {
       res.send({ message: "not logged in" });
       return;
     }
-    db.query(`SELECT * FROM users;`)
-      .then((data) => {
-        const users = data.rows;
-        res.render("user");
-      })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+    res.redirect(`/user/${userId}`);
+    // db.query(`SELECT * FROM users;`)
+    //   .then((data) => {
+    //     const users = data.rows;
+    //     res.render("user");
+    //   })
+    //   .catch((err) => {
+    //     res.status(500).json({ error: err.message });
+    //   });
   });
 
   router.get("/:id", (req, res) => {
     const userId = req.params.id;
-    const userObj = req.session.userId
+    const userObj = req.session.userId;
     Promise.all([
       dbHelpers.getUserInfo(userId, db),
       dbHelpers.getUserItems(userId, db),
     ])
       .then((results) => {
-        const templateVars = { results: results[0], userItems: results[1], userObj };
+        const templateVars = {
+          results: results[0],
+          userItems: results[1],
+          userObj,
+        };
         res.render("user", templateVars);
       })
       .catch((err) => {

@@ -63,22 +63,14 @@
     <div class="container">
       <div class="header-bar">
         <h4 class="featured-items-listing">All Items</h4>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle btn-sm"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Sort By
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button class="price-high">Price: High to Low</button>
-            <button class="price-low">Price: Low to High</button>
-          </div>
-        </div>
+        <select class="dropdown" name="price-sorting">
+          <option class="price-high" type="button" value="h2l">
+            Price: High to Low
+          </option>
+          <option class="price-low" type="button" value="l2h">
+            Price: Low to High
+          </option>
+        </select>
       </div>
       <div class="feature-container">
         <% for(let result of results) { %>
@@ -94,9 +86,19 @@
             </div>
             <div class="price-logo-box">
               <% if (!result.sold) { %>
-              <div class="prod-price">$<%= parseFloat(result.price_in_cents/1000).toFixed(2) %></div>
+              <div
+                class="prod-price"
+                data-price="<%= parseFloat(result.price_in_cents/1000).toFixed(2) %>"
+              >
+                $<%= parseFloat(result.price_in_cents/1000).toFixed(2) %>
+              </div>
               <% } else { %>
-                <div class="prod-price-sold">Sold!</div>
+              <div
+                class="prod-price-sold"
+                data-price="<%= parseFloat(result.price_in_cents/1000).toFixed(2) %>"
+              >
+                Sold!
+              </div>
               <% } %>
               <div class="product-icons">
                 <i class="fa-solid fa-heart"></i>

@@ -14,7 +14,7 @@ module.exports = () => {
     req.session.userId = req.params.id;
     // console.log("userID", req.session.userId)
     // send the user back to home once logged in
-    res.redirect("/user/2");
+    res.redirect("/user");
   });
   return router;
 };

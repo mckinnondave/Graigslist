@@ -3,7 +3,7 @@ $main-color: #f4f4f3;
 $border-color: #b4b4b4;
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .lrg-banner {
@@ -34,12 +34,23 @@ body {
 .cat-link:hover {
   transition: .3s;
   color: black;
-  cursor: pointer
+  cursor: pointer;
+}
+
+.cat-items:hover {
+  transition: 0.3s;
+  color: #7c7b7b;
+  cursor: pointer;
 }
 
 .featured-items {
   margin-top: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   border-bottom: solid black 5px;
 }
 
+select.dropdown {
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
