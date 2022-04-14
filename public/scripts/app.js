@@ -1,7 +1,7 @@
 // Element Creator
 const createNewListing = function (data) {
   let $userListing = `
-  <section class="product-container">
+  <section class="prod-price">
   <div class ="product-image"><img src="${
     data.image_url
   }" class="result-image"></div>
@@ -47,17 +47,18 @@ $(document).ready(function () {
 
   $(".fa-trash-can").click(function (event) {
     event.preventDefault();
-    const dataId = $(this).attr("data-id")
+    const dataId = $(this).attr("data-id");
     $.ajax({
       method: "POST",
       url: `/listings/delete`,
-      data: { dataId }
-    }).then(() => {
-      $(`#product-${dataId}`).remove();
+      data: { dataId },
     })
-    .catch((e) => {
-      console.log(e);
-    });
+      .then(() => {
+        $(`#product-${dataId}`).remove();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   });
 
   $(".fa-heart").click( function (event) {
@@ -93,17 +94,21 @@ $(document).ready(function () {
   })
 
   $(".fa-circle-check").click(function(event) {
+  //
+  $(".fa-circle-check").click(function (event) {
     event.preventDefault();
-    const dataId2 =$(this).attr("data-id2")
+    const dataId2 = $(this).attr("data-id2");
     $.ajax({
       method: "POST",
       url: "/listings/sold",
-      data: { dataId2 }
+      data: { dataId2 },
     }).then(() => {
-      const val = $(`#product-${ dataId2 } .prod-price`).text("Sold!").addClass("prod-price-sold")
+      const val = $(`#product-${dataId2} .prod-price`)
+        .text("Sold!")
+        .addClass("prod-price-sold");
       console.log(val);
-    })
-  })
+    });
+  });
 
   $(".btn-new-listing").click(function () {
     $(".post-listing-box").slideToggle("slow");
@@ -112,15 +117,13 @@ $(document).ready(function () {
   $("#search-form").on("submit", function (event) {
     event.preventDefault();
     const searchData = $("#search-text").val();
-    console.log("searchData", searchData);
     const cleanSearchData = searchData.replace(/[^A-Z0-9]+/gi, "+");
-    console.log("cleanSearchData", cleanSearchData);
 
     //attach query string to search url
-    //do the get api call
     let url = "/search?name=";
     url += cleanSearchData;
-    // "/search?term=red+bike"
+
+    //do the get api call
     $.get(url).then((response) => {
       // once search is returned, do something
       const baseUrl = window.location.origin;
@@ -129,4 +132,51 @@ $(document).ready(function () {
       // res.redirect("/user");
     });
   });
-})
+
+  //   $(".price-high").on("click", function (event) {
+  //     event.preventDefault();
+  //     let url = "price_desc=true";
+  //     //do the get api call
+  //     $.get(url).then((response) => {
+  //       // once sort order is returned, do something
+  //       const baseUrl = window.location.origin;
+  //       //could use this if we add price filter $.param({"name": "foo"})
+  //       window.location.replace(baseUrl + "&" + url);
+  //       // res.redirect("/user");
+  //     });
+  //   });
+  // });
+
+  $("select.dropdown").on("change", function () {
+    const sortingMethod = $(this).val();
+    const sortProductsPriceAscending = function () {
+      const gridItems = $(".product-container");
+
+      gridItems.sort(function (a, b) {
+        return (
+          $(".prod-price", a).data("price") - $(".prod-price", b).data("price")
+        );
+      });
+
+      $(".feature-container").append(gridItems);
+    };
+
+    const sortProductsPriceDescending = function () {
+      const gridItems = $(".product-container");
+
+      gridItems.sort(function (a, b) {
+        return (
+          $(".prod-price", b).data("price") - $(".prod-price", a).data("price")
+        );
+      });
+
+      $(".feature-container").append(gridItems);
+    };
+
+    if (sortingMethod === "l2h") {
+      sortProductsPriceAscending();
+    } else if (sortingMethod === "h2l") {
+      sortProductsPriceDescending();
+    }
+  });
+})})

@@ -9,11 +9,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent ">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <div class="right-nav">
-            <i class="fa-solid fa-envelope nav-envelope fa-xl"></i>
+            <a href="/messages"><i class="fa-solid fa-envelope nav-envelope fa-xl"></i></a>
+            <a href="/user"><i class="fa-solid fa-user fa-xl"></i></a>
             <button class="btn btn-outline-success btn-new-listing">Create New Listing</button>
-            <form action="/logout" method="POST" id="logout-form">
-              <button class="btn btn-outline-danger btn-logout" type="submit">Logout</button>
-            </form>
+              <a class="btn btn-outline-danger btn-logout" type="submit" href="/logout">Logout</a>
           </div>
         </ul>
         </form>
