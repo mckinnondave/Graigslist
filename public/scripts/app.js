@@ -60,7 +60,7 @@ $(document).ready(function () {
     });
   });
 
-  // 
+  //
   $(".fa-circle-check").click(function(event) {
     event.preventDefault();
     const dataId2 =$(this).attr("data-id2")
@@ -93,6 +93,7 @@ $(document).ready(function () {
     $.get(url).then((response) => {
       // once search is returned, do something
       const baseUrl = window.location.origin;
+      //could use this if we add price filter $.param({"name": "foo"})
       window.location.replace(baseUrl + "/search?name=" + cleanSearchData);
       // res.redirect("/user");
     });

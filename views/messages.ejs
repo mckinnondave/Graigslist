@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Conversations</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -10,6 +10,7 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/message-system.js"></script>
 
     <!-- Header Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,70 +45,56 @@
   </head>
 
   <body>
-    <%- include('partials/_header') %>
+    <%- include('partials/_user-header') %>
 
     <div class="container">
-      <h1 class="lrg-banner">Welcome to Graigslist!</h1>
-      <p>
-        Sell your things at home for new and gently used items. Shop sustainably
-        on Graigslist with a growing community in your local city.
-      </p>
+      <h1 class="lrg-banner">Hi 'Andy'!</h1>
     </div>
-    <div class="category-container">
-      <div class="category-bar container">
-        <div class="cat-items">
-          <a href="./listings/categories/art_handmade">Art & Handmade</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/automotive">Automotive</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/books">Books</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/clothing">Clothing</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/electronics">Electronics</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/furniture">Furniture</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/movies">Movies</a>
-        </div>
-        <div class="cat-items">
-          <a href="./listings/categories/video_games">Video Games</a>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <h4 class="featured-items">Most Popular Items</h4>
-      <div class="feature-container">
-        <% for(let result of results) { %>
-        <section class="product-container">
-          <div class="product-image">
-            <img src="<%= result.image_url %>" class="result-image" />
-          </div>
-          <div class="product-bar">
-            <div class="product-name"><%= result.name %></div>
-            <div class="price-logo-box">
-              <% if (!result.sold) { %>
-              <div class="prod-price">$<%= parseFloat(result.price_in_cents/1000).toFixed(2) %></div>
-              <% } else { %>
-                <div class="prod-price-sold">Sold!</div>
-              <% } %>
-              <div class="product-icons">
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-envelope"></i>
-              </div>
+    <section class="container messages">
+      <div class="row">
+        <div class="col conversation-list">
+          <% for(let result of results) { %>
+          <article
+            class="conversation"
+            id="<%= result.conversation_id %>"
+            data-receiver-id="<%= result.receiver_id %>"
+          >
+            <div class="conversation-title">
+              <a href="#"><%= result.listing_name %></a>
             </div>
+            <div class="conversation-recipient">
+
+                <a href="#">Between <%= result.receiver_name %> and <%= result.sender_name %></a>
+
+            </div>
+          </article>
+          <% } %>
+        </div>
+        <div class="col messages">
+          <div class="compose-message">
+            <div id="message-errors"></div>
+            <form id="message-form" class="form-inline">
+              <textarea
+                name="text"
+                id="message-text"
+                placeholder="Send the buyer a new message"
+                required
+                class="new-message"
+              ></textarea>
+              <input type="hidden" name="conversation_id" />
+              <input type="hidden" name="receiver_id" />
+              <button
+                type="submit"
+                id="message-submit-button"
+                class="submit-button"
+              >
+                Send
+              </button>
+            </form>
           </div>
-          <div class="product-description"><%= result.description %></div>
-        </section>
-        <% } %>
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- Bootstrap JS -->
     <script
