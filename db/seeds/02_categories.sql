@@ -9,3 +9,4 @@ VALUES
     ('6', 'Video Games', 'video_games'),
     ('7', 'Automotive', 'automotive'),
     ('8', 'Movies', 'movies');
+ALTER SEQUENCE categories_id_seq RESTART WITH 9;
