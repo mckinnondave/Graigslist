@@ -250,5 +250,4 @@ VALUES
     ('248', '4', '54'),
     ('249', '5', '63'),
     ('250', '6', '7');
-
 ALTER SEQUENCE favourites_id_seq RESTART WITH 251;

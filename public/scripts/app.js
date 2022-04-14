@@ -47,7 +47,7 @@ $(document).ready(function () {
 
   $(".fa-trash-can").click(function (event) {
     event.preventDefault();
-    var dataId =$(this).attr("data-id")
+    const dataId =$(this).attr("data-id")
     $.ajax({
       method: "POST",
       url: `/listings/delete`,
@@ -86,6 +86,18 @@ $(document).ready(function () {
       console.log(e)
     })
   }
+  //
+  $(".fa-circle-check").click(function(event) {
+    event.preventDefault();
+    const dataId2 =$(this).attr("data-id2")
+    $.ajax({
+      method: "POST",
+      url: "/listings/sold",
+      data: { dataId2 }
+    }).then(() => {
+      const val = $(`#product-${ dataId2 } .prod-price`).text("Sold!").addClass("prod-price-sold")
+      console.log(val);
+    })
   })
 
   $(".btn-new-listing").click(function () {
@@ -107,6 +119,7 @@ $(document).ready(function () {
     $.get(url).then((response) => {
       // once search is returned, do something
       const baseUrl = window.location.origin;
+      //could use this if we add price filter $.param({"name": "foo"})
       window.location.replace(baseUrl + "/search?name=" + cleanSearchData);
       // res.redirect("/user");
     });

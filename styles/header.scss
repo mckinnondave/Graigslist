@@ -1,11 +1,15 @@
+// All CSS in this file are used for both header partials
+$main-color: #f4f4f3;
+$border-color: #b4b4b4;
+
 header {
   font-family: 'Oxygen', sans-serif;
   font-weight: bold;
-  border-bottom: solid #b4b4b4 1px;
+  border-bottom: solid $border-color 1px;
 }
 
 nav {
-  background-color: #f4f4f3;
+  background-color: $main-color;
 }
 
 .me-2 {

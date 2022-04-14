@@ -52,10 +52,17 @@
         <div class="lrg-prod-name"><%= results.name %></div>
         <div class="lrg-prod-desc"><%= results.description %></div>
         <div class="like-offer">
-          <i class="fa-solid fa-heart fa-xl prod-heart"></i>
+          <div class="lrg-prod-price">
+            <div class ="lrg-price">$<%= parseFloat(results.price_in_cents/1000).toFixed(2) %></div>
+            <i class="fa-solid fa-heart fa-xl prod-heart"></i>
+          </div>
+          <% if (!results.sold) { %>
           <button class="btn btn-outline-danger make-offer-btn btn-sm">
             Make An Offer
           </button>
+          <% } else { %>
+            <div class="lrg-sold">Sold!</div>
+          <% } %>
         </div>
       </div>
     </div>

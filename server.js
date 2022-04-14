@@ -85,7 +85,7 @@ app.use("/favourite", favouriteRoutes(db, dbHelpers));
 
 app.get("/", (req, res) => {
   const listingParams = req.params;
-  dbHelpers.getAllListings(listingParams, db).then((results) => {
+  dbHelpers.getMostLikedListings(listingParams, db).then((results) => {
     // console.log("result", results);
     // res.send(results);
     const templateVars = { results: results };

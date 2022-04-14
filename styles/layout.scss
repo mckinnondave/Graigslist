@@ -4,3 +4,105 @@ body,
 html {
   margin: 0;
 }
+/******
+Styling for the messages list goes below
+******/
+.col {
+  border: solid black 5px;
+  border-radius: 10px;
+  margin: 0 1em;
+  height: 70vh;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+//creates padding within the conversation container
+.conversation-list .conversation {
+  padding: 20px;
+}
+.message.from-them {
+  align-self: flex-start;
+}
+.message.from-me {
+  align-self: flex-end;
+}
+
+//general styling for the messages
+.message {
+  padding: 10px 20px;
+  width: 80%;
+}
+.message-content {
+  border-radius: 25px;
+  padding: 10px 20px;
+  border-style: solid;
+  border-width: 2px;
+}
+.from-me .message-content {
+  border-bottom-right-radius: 0 !important;
+  background: #dcebfa;
+}
+
+.from-them .message-content {
+  border-bottom-left-radius: 0 !important;
+  background: #f2f2f2;
+}
+
+//makes every second convo in the list a different colour background
+.conversation-list .conversation:nth-child(2n) {
+  background-color: #f2f2f2;
+}
+
+//remove padding from the column so row colors go to edge, add scrolling
+.container.messages .row .col {
+  padding: 0px;
+  overflow: auto;
+}
+
+// hover effect on conversation
+.conversation-list .conversation:hover {
+  background-color: #dcebfa;
+}
+
+.conversation.selected {
+  background-color: #dcebfa !important;
+}
+
+// style the convo title
+.conversation .conversation-title a {
+  text-decoration: none;
+  color: #000000;
+}
+
+// style the recipient
+.conversation .conversation-recipient a {
+  text-decoration: none;
+  color: #909090;
+}
+
+// new message form
+.new-message {
+  width: 75%;
+  height: min-content;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding-top: 20px;
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 20px;
+}
+.submit-button {
+  background-color: blue;
+  padding: 20px;
+  color: white;
+  border-radius: 70px;
+  border: none;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+.compose-message {
+  padding: 10px 20px;
+}

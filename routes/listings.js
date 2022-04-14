@@ -28,7 +28,7 @@ module.exports = (db, dbHelpers) => {
   router.get("/categories/:category_slug", (req, res) => {
     const categoryParams = req.params;
     dbHelpers.getCategoryListings(categoryParams, db).then((results) => {
-      // console.log("results", results);
+      console.log("results", results);
       // console.log("listingParams", listingParams);
       // res.send(results);
       const templateVars = { results: results };
@@ -84,6 +84,20 @@ module.exports = (db, dbHelpers) => {
     WHERE id = ${dataId}
     `
     db.query(itemQuery)
+    .then(() => {
+      res.send("OK");
+    })
+  })
+
+  router.post("/sold", (req, res) => {
+    const { dataId2 } = req.body;
+    console.log(dataId2);
+    const dataQuery = `
+    UPDATE listings
+    SET sold = TRUE
+    WHERE id = ${dataId2}
+    `
+    db.query(dataQuery)
     .then(() => {
       res.send("OK");
     })
