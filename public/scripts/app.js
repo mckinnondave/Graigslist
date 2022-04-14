@@ -148,7 +148,10 @@ $(".fa-heart").click( function (event) {
       url: '/favourite',
       data: { listingId }
     }).then((data) => {
-      console.log("DATA", data[0]);
+      console.log("FAVOURITE DATA", data[0]);
+      //if class === true exists, then remove class, and add false
+      //ifnot then remove false, add true
+      $(this).addClass("true");
     })
     .catch((e) => {
       console.log(e)
