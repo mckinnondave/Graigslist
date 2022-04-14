@@ -4,6 +4,7 @@ const router = express.Router();
 module.exports = (db, dbHelpers) => {
   router.get("/", (req, res) => {
     const searchParams = req.query.name;
+    const userObj = req.session.userId
     console.log("search query", searchParams);
     //might have to change this
     // if (!searchParams) {
@@ -20,7 +21,7 @@ module.exports = (db, dbHelpers) => {
         // console.log("results", results);
         // res.send(results);
 
-        const templateVars = { results };
+        const templateVars = { results, userObj };
         res.render("search", templateVars);
       })
       .catch((e) => {
