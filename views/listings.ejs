@@ -52,7 +52,7 @@
 
     <div class="container">
       <h1 class="lrg-banner">
-        You are viewing: <%= results[0].category_name %>
+        You are viewing all listings
       </h1>
       <p>
         Sell your things at home for new and gently used items. Shop sustainably
@@ -101,7 +101,7 @@
               </div>
               <% } %>
               <div class="product-icons">
-                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart <%= result.favourite %>" data-id="<%= result.id %>"></i>
                 <i class="fa-solid fa-envelope"></i>
               </div>
             </div>
