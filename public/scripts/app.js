@@ -51,7 +51,7 @@ $(document).ready(function () {
     $.ajax({
       method: "POST",
       url: `/listings/delete`,
-      data: { dataId }
+      data: $(this).serialize()
     }).then(() => {
       $(`#product-${dataId}`).remove();
     })
@@ -60,7 +60,33 @@ $(document).ready(function () {
     });
   });
 
-  
+  $(".fa-heart").click( function (event) {
+    event.preventDefault();
+    let listingId = $(this).attr("data-id")
+    console.log("DATA ID", $(this).attr("data-id"))
+    if ($(".fa-heart").hasClass("clicked")) {
+      $.ajax({
+        method: "POST",
+        url: '/favourite/delete',
+        data: { listingId }
+      }).then((data) => {
+        console.log("DATA DELETE", data);
+        $(".fa-heart").removeClass("clicked");
+      })
+    } else {
+    $.ajax({
+      method: "POST",
+      url: '/favourite',
+      data: { listingId }
+    }).then((data) => {
+      console.log("DATA", data[0]);
+      $(".fa-heart").addClass("clicked");
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  }
+  })
 
   $(".btn-new-listing").click(function () {
     $(".post-listing-box").slideToggle("slow");
