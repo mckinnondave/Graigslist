@@ -7,7 +7,7 @@ module.exports = (db, dbHelpers) => {
   //
   router.get("/", (req, res) => {
     if (!req.session.userId) {
-      res.redirect("/login");
+      res.redirect("/");
     }
     const messagesParams = req.session.userId;
     dbHelpers.getAllConvos(messagesParams, db).then((results) => {

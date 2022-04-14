@@ -29,6 +29,7 @@ module.exports = (db, dbHelpers) => {
 
   router.get("/:id", (req, res) => {
     const userId = req.params.id;
+    const userObj = req.session.userId
     Promise.all([
       dbHelpers.getUserInfo(userId, db),
       dbHelpers.getUserItems(userId, db),

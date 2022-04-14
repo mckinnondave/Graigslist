@@ -86,9 +86,10 @@ app.use("/favourite", favouriteRoutes(db, dbHelpers));
 app.get("/", (req, res) => {
   const listingParams = req.params;
   dbHelpers.getMostLikedListings(listingParams, db).then((results) => {
+    const userObj = req.session.userId
     // console.log("result", results);
     // res.send(results);
-    const templateVars = { results: results };
+    const templateVars = { results: results, userObj };
     res.render("index", templateVars);
   });
 });
