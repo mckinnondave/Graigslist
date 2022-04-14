@@ -47,11 +47,11 @@ $(document).ready(function () {
 
   $(".fa-trash-can").click(function (event) {
     event.preventDefault();
-    const dataId =$(this).attr("data-id")
+    const dataId = $(this).attr("data-id")
     $.ajax({
       method: "POST",
       url: `/listings/delete`,
-      data: $(this).serialize()
+      data: { dataId }
     }).then(() => {
       $(`#product-${dataId}`).remove();
     })
@@ -63,30 +63,35 @@ $(document).ready(function () {
   $(".fa-heart").click( function (event) {
     event.preventDefault();
     let listingId = $(this).attr("data-id")
-    console.log("DATA ID", $(this).attr("data-id"))
-    if ($(".fa-heart").hasClass("clicked")) {
-      $.ajax({
-        method: "POST",
-        url: '/favourite/delete',
-        data: { listingId }
-      }).then((data) => {
-        console.log("DATA DELETE", data);
-        $(".fa-heart").removeClass("clicked");
-      })
-    } else {
     $.ajax({
       method: "POST",
       url: '/favourite',
       data: { listingId }
     }).then((data) => {
       console.log("DATA", data[0]);
-      $(".fa-heart").addClass("clicked");
     })
     .catch((e) => {
       console.log(e)
     })
-  }
-  //
+  })
+
+  $(".fa-remove").click( function (event) {
+    event.preventDefault();
+    let listingId = $(this).attr("data-id2")
+    console.log("DATA ID", $(this).attr("data-id2"))
+    $.ajax({
+      method: "POST",
+      url: '/favourite/delete',
+      data: { listingId }
+    }).then((data) => {
+      $(`#favourite-${listingId}`).remove()
+      console.log("DATA", data);
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  })
+
   $(".fa-circle-check").click(function(event) {
     event.preventDefault();
     const dataId2 =$(this).attr("data-id2")
@@ -124,4 +129,4 @@ $(document).ready(function () {
       // res.redirect("/user");
     });
   });
-});
+})
