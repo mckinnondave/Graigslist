@@ -48,7 +48,7 @@ const sortProductsPriceDescending = function () {
 };
 
 $(document).ready(function () {
-  // $(".post-listing-box").hide();
+  $(".post-listing-box").hide();
 
   $("#post-form").on("submit", function (event) {
     event.preventDefault();
@@ -97,12 +97,9 @@ $(document).ready(function () {
     });
   });
 
-  // $(".btn-new-listing").click(function () {
-  //   if (window.location.pathname === `/user/${data[0].creator_id}`) {
-  //     $(".post-listing-box").slideToggle("slow");
-  //   }
-  //   window.location.href = "/user";
-  // });
+  $(".btn-new-listing").click(function () {
+      $(".post-listing-box").slideToggle("slow");
+  });
 
   $("#search-form").on("submit", function (event) {
     event.preventDefault();
