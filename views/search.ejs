@@ -47,11 +47,11 @@
     <% if (!userObj) { %>
       <%- include('partials/_header') %>
       <% } else { %>
-      <%- include('partials/_user-header') %>
+      <%- include('partials/_logged-in-header') %>
       <% } %>
 
     <div class="container">
-      <h1 class="lrg-banner">Searching for 'shirt' in Vancouver</h1>
+      <h1 class="lrg-banner">Search Results for '<%= searchParams %>'</h1>
       <p>
         Sell your things at home for new and gently used items. Shop sustainably
         on Graigslist with a growing community in your local city.
@@ -81,7 +81,7 @@
           </div>
           <div class="product-bar">
             <div class="product-name">
-              <a class="name-link" href="../routes/listings/<%= result.id %>">
+              <a class="name-link cat-link" href="../listings/<%= result.id %>">
                 <%= result.name %>
               </a>
             </div>

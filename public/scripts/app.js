@@ -1,7 +1,7 @@
 // Element Creator
 const createNewListing = function (data) {
   let $userListing = `
-  <section class="prod-price">
+  <section class="product-container">
   <div class ="product-image"><img src="${
     data.image_url
   }" class="result-image"></div>
@@ -23,28 +23,46 @@ const createNewListing = function (data) {
   return $userListing;
 };
 
+const sortProductsPriceAscending = function () {
+  const gridItems = $(".product-container");
+
+  gridItems.sort(function (a, b) {
+    return (
+      $(".prod-price", a).data("price") - $(".prod-price", b).data("price")
+    );
+  });
+
+  $(".feature-container").append(gridItems);
+};
+
+const sortProductsPriceDescending = function () {
+  const gridItems = $(".product-container");
+
+  gridItems.sort(function (a, b) {
+    return (
+      $(".prod-price", b).data("price") - $(".prod-price", a).data("price")
+    );
+  });
+
+  $(".feature-container").append(gridItems);
+};
+
 $(document).ready(function () {
   $(".post-listing-box").hide();
 
-  $("form").on("submit", function (event) {
+  $("#post-form").on("submit", function (event) {
     event.preventDefault();
-    console.log("111");
-    console.log($(this).serialize());
-    this.reset;
     $.ajax({
       method: "POST",
       url: "/listings/create",
       data: $(this).serialize(),
     })
       .then((data) => {
-        console.log("DATA", data);
         $(".feature-container").prepend(createNewListing(data[0]));
-        this.reset
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log("222");
   });
 
   $(".fa-trash-can").click(function (event) {
@@ -96,7 +114,7 @@ $(document).ready(function () {
   })
 
   $(".fa-circle-check").click(function(event) {
-  
+
   $(".fa-circle-check").click(function (event) {
     event.preventDefault();
     const dataId2 = $(this).attr("data-id2");
@@ -113,7 +131,7 @@ $(document).ready(function () {
   });
 
   $(".btn-new-listing").click(function () {
-    $(".post-listing-box").slideToggle("slow");
+      $(".post-listing-box").slideToggle("slow");
   });
 
   $("#search-form").on("submit", function (event) {
@@ -151,30 +169,6 @@ $(document).ready(function () {
 
   $("select.dropdown").on("change", function () {
     const sortingMethod = $(this).val();
-    const sortProductsPriceAscending = function () {
-      const gridItems = $(".product-container");
-
-      gridItems.sort(function (a, b) {
-        return (
-          $(".prod-price", a).data("price") - $(".prod-price", b).data("price")
-        );
-      });
-
-      $(".feature-container").append(gridItems);
-    };
-
-    const sortProductsPriceDescending = function () {
-      const gridItems = $(".product-container");
-
-      gridItems.sort(function (a, b) {
-        return (
-          $(".prod-price", b).data("price") - $(".prod-price", a).data("price")
-        );
-      });
-
-      $(".feature-container").append(gridItems);
-    };
-
     if (sortingMethod === "l2h") {
       sortProductsPriceAscending();
     } else if (sortingMethod === "h2l") {

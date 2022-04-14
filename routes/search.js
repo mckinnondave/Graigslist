@@ -19,9 +19,11 @@ module.exports = (db, dbHelpers) => {
         // console.log("req.query", req.query);
         // console.log("req.params", req.params);
         console.log("results", results);
+        console.log("req.query", req.query);
         // res.send(results);
 
-        const templateVars = { results, userObj };
+        const templateVars = { results, userObj, searchParams };
+        console.log(templateVars);
         res.render("search", templateVars);
       })
       .catch((e) => {
