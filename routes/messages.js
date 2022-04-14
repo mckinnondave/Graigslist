@@ -9,10 +9,11 @@ module.exports = (db, dbHelpers) => {
     if (!req.session.userId) {
       res.redirect("/login");
     }
-    const messagesParams = req.params;
-
+    const messagesParams = req.session.userId;
     dbHelpers.getAllConvos(messagesParams, db).then((results) => {
-      const templateVars = { results: results };
+      // console.log("RESULTS", results);
+      // console.log("HELLOTHERE", req.session.userId);
+      const templateVars = { results: results, userId: req.session.userId };
       res.render("messages", templateVars);
     });
   });
@@ -22,36 +23,28 @@ module.exports = (db, dbHelpers) => {
       res.redirect("/login");
     }
     const messagesParams = req.session.userId;
-    console.log("messagesPARAMS", messagesParams);
+    // console.log("messagesPARAMS", messagesParams);
+
     dbHelpers.getAllConvos(messagesParams, db).then((results) => {
-      console.log("RESULTS", results);
-      const templateVars = { results: results };
-      res.send({ results });
+      // console.log("HELLOTHERE", req.session.userId);
+      // console.log("RESULTS", results);
+      res.send({ results, userId: req.session.userId });
     });
   });
 
-  router.get("/convo", (req, res) => {
+  router.get("/convo/:conversation_id", (req, res) => {
     if (!req.session.userId) {
       res.redirect("/login");
     }
-    const messagesParams = req.session.userId;
-    console.log("messagesPARAMS", messagesParams);
-    dbHelpers.getAllMessagesForConvo(messagesParams, db).then((results) => {
-      // console.log("RESULTS", results);
-      const templateVars = { results: results };
+    // const messagesParams = req.session.userId;
+    // console.log("messagesPARAMS", messagesParams);
+    const conversationId = req.params.conversation_id;
+    dbHelpers.getAllMessagesForConvo(conversationId, db).then((results) => {
+      console.log("RESULTS", results);
+      // const templateVars = { results: results };
       res.send({ results });
     });
   });
-
-  // router.get("/", function (req, res) {
-  //   DataHelpers.getTweets((err, tweets) => {
-  //     if (err) {
-  //       res.status(500).json({ error: err.message });
-  //     } else {
-  //       res.json(tweets);
-  //     }
-  //   });
-  // });
 
   router.post("/", function (req, res) {
     // if (!req.session.userId) {

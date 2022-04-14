@@ -54,12 +54,18 @@
       <div class="row">
         <div class="col conversation-list">
           <% for(let result of results) { %>
-          <article class="conversation" id="<%= result.conversation_id %>">
+          <article
+            class="conversation"
+            id="<%= result.conversation_id %>"
+            data-receiver-id="<%= result.receiver_id %>"
+          >
             <div class="conversation-title">
               <a href="#"><%= result.listing_name %></a>
             </div>
             <div class="conversation-recipient">
-              <a href="#">Between you and <%= result.user_name %></a>
+
+                <a href="#">Between <%= result.receiver_name %> and <%= result.sender_name %></a>
+
             </div>
           </article>
           <% } %>
@@ -75,8 +81,8 @@
                 required
                 class="new-message"
               ></textarea>
-              <input type="hidden" name="conversation_id" value="1" />
-              <input type="hidden" name="receiver_id" value="1" />
+              <input type="hidden" name="conversation_id" />
+              <input type="hidden" name="receiver_id" />
               <button
                 type="submit"
                 id="message-submit-button"

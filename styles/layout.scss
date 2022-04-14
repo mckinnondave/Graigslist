@@ -50,6 +50,7 @@ Styling for the messages list goes below
   border-bottom-left-radius: 0 !important;
   background: #f2f2f2;
 }
+
 //makes every second convo in the list a different colour background
 .conversation-list .conversation:nth-child(2n) {
   background-color: #f2f2f2;
@@ -63,7 +64,11 @@ Styling for the messages list goes below
 
 // hover effect on conversation
 .conversation-list .conversation:hover {
-  background: #dcebfa;
+  background-color: #dcebfa;
+}
+
+.conversation.selected {
+  background-color: #dcebfa !important;
 }
 
 // style the convo title
