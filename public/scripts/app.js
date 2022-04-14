@@ -52,17 +52,21 @@ $(document).ready(function () {
 
   $("#post-form").on("submit", function (event) {
     event.preventDefault();
+    console.log("111");
+    console.log($(this).serialize());
     $.ajax({
       method: "POST",
       url: "/listings/create",
       data: $(this).serialize(),
     })
       .then((data) => {
+        console.log("DATA", data);
         $(".feature-container").prepend(createNewListing(data[0]));
       })
       .catch((e) => {
         console.log(e);
       });
+    console.log("222");
   });
 
   $(".fa-trash-can").click(function (event) {
@@ -81,40 +85,7 @@ $(document).ready(function () {
       });
   });
 
-  $(".fa-heart").click( function (event) {
-    event.preventDefault();
-    let listingId = $(this).attr("data-id")
-    $.ajax({
-      method: "POST",
-      url: '/favourite',
-      data: { listingId }
-    }).then((data) => {
-      console.log("DATA", data[0]);
-    })
-    .catch((e) => {
-      console.log(e)
-    })
-  })
-
-  $(".fa-remove").click( function (event) {
-    event.preventDefault();
-    let listingId = $(this).attr("data-id2")
-    console.log("DATA ID", $(this).attr("data-id2"))
-    $.ajax({
-      method: "POST",
-      url: '/favourite/delete',
-      data: { listingId }
-    }).then((data) => {
-      $(`#favourite-${listingId}`).remove()
-      console.log("DATA", data);
-    })
-    .catch((e) => {
-      console.log(e)
-    })
-  })
-
-  $(".fa-circle-check").click(function(event) {
-
+  //
   $(".fa-circle-check").click(function (event) {
     event.preventDefault();
     const dataId2 = $(this).attr("data-id2");
@@ -130,8 +101,10 @@ $(document).ready(function () {
     });
   });
 
+
+
   $(".btn-new-listing").click(function () {
-      $(".post-listing-box").slideToggle("slow");
+    $(".post-listing-box").slideToggle("slow");
   });
 
   $("#search-form").on("submit", function (event) {
@@ -167,6 +140,38 @@ $(document).ready(function () {
   //   });
   // });
 
+$(".fa-heart").click( function (event) {
+    event.preventDefault();
+    let listingId = $(this).attr("data-id")
+    $.ajax({
+      method: "POST",
+      url: '/favourite',
+      data: { listingId }
+    }).then((data) => {
+      console.log("DATA", data[0]);
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  })
+
+  $(".fa-remove").click( function (event) {
+    event.preventDefault();
+    let listingId = $(this).attr("data-id3")
+    console.log("DATA ID", $(this).attr("data-id3"))
+    $.ajax({
+      method: "POST",
+      url: '/favourite/delete',
+      data: { listingId }
+    }).then((data) => {
+      $(`#favourite-${listingId}`).remove()
+      console.log("DATA", data);
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  })
+
   $("select.dropdown").on("change", function () {
     const sortingMethod = $(this).val();
     if (sortingMethod === "l2h") {
@@ -175,4 +180,4 @@ $(document).ready(function () {
       sortProductsPriceDescending();
     }
   });
-})})
+});
