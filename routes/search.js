@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
-
+// let userObj;
 module.exports = (db, dbHelpers) => {
   router.get("/", (req, res) => {
     const searchParams = req.query.name;
-    const userObj = req.session.userId
+    const userObj = req.session.userId;
+    // console.log("THE USER OBJ", userObj);
     // console.log("search query", searchParams);
     dbHelpers
-      .getSearchResults(searchParams, db)
+      .getSearchResults(searchParams, db, userObj)
       .then((results) => {
         // res.send(results);
         const templateVars = { results, userObj, searchParams };
@@ -24,3 +25,4 @@ module.exports = (db, dbHelpers) => {
 
   return router;
 };
+
