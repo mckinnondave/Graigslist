@@ -43,15 +43,9 @@
           <% } %>
 
             <div class="container">
-              <% if (results[0].category_name) { %>
                 <h1 class="lrg-banner">
                   You are viewing: <%= results[0].category_name %>
                 </h1>
-                <% } else {%>
-                  <h1 class="lrg-banner">
-                    You are viewing: Everything!
-                  </h1>
-                  <% } %>
                     <p>
                       Sell your things at home for new and gently used items. Shop sustainably
                       on Graigslist with a growing community in your local city.
@@ -62,6 +56,9 @@
               <div class="header-bar">
                 <h4 class="featured-items-listing">All Items</h4>
                 <select class="dropdown" name="price-sorting">
+                  <option type="button" class="hide-it">
+                    Sort Products
+                  </option>
                   <option class="price-high" type="button" value="h2l">
                     Price: High to Low
                   </option>
@@ -78,7 +75,7 @@
                     </div>
                     <div class="product-bar">
                       <div class="product-name">
-                        <a class="name-link cat-link" href="../routes/listings/<%= result.id %>">
+                        <a class="name-link cat-link" href="/listings/<%= result.id %>">
                           <%= result.name %>
                         </a>
                       </div>
