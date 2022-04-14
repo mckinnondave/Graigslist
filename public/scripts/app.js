@@ -47,7 +47,7 @@ $(document).ready(function () {
 
   $(".fa-trash-can").click(function (event) {
     event.preventDefault();
-    var dataId =$(this).attr("data-id")
+    const dataId =$(this).attr("data-id")
     $.ajax({
       method: "POST",
       url: `/listings/delete`,
@@ -60,7 +60,7 @@ $(document).ready(function () {
     });
   });
 
-  
+
 
   $(".btn-new-listing").click(function () {
     $(".post-listing-box").slideToggle("slow");
