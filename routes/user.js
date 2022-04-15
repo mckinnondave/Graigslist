@@ -34,11 +34,13 @@ module.exports = (db, dbHelpers) => {
     Promise.all([
       dbHelpers.getUserInfo(userId, db),
       dbHelpers.getUserItems(userId, db),
+      dbHelpers.getUserFavourites(userId, db)
     ])
       .then((results) => {
         const templateVars = {
           results: results[0],
           userItems: results[1],
+          favouriteItems: results[2],
           userObj,
         };
         res.render("user", templateVars);
