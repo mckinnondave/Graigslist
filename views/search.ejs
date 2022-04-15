@@ -44,11 +44,8 @@
   </head>
 
   <body>
-    <% if (!userObj) { %>
-      <%- include('partials/_header') %>
-      <% } else { %>
-      <%- include('partials/_user-header') %>
-      <% } %>
+    <% if (!userObj) { %> <%- include('partials/_header') %> <% } else { %> <%-
+    include('partials/_user-header') %> <% } %>
 
     <div class="container">
       <h1 class="lrg-banner">Searching for 'shirt' in Vancouver</h1>

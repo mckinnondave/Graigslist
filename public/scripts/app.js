@@ -1,7 +1,7 @@
 // Element Creator
 const createNewListing = function (data) {
   let $userListing = `
-  <section class="prod-price">
+  <section class="product-container">
   <div class ="product-image"><img src="${
     data.image_url
   }" class="result-image"></div>
@@ -100,46 +100,28 @@ $(document).ready(function () {
     });
   });
 
-  //   $(".price-high").on("click", function (event) {
-  //     event.preventDefault();
-  //     let url = "price_desc=true";
-  //     //do the get api call
-  //     $.get(url).then((response) => {
-  //       // once sort order is returned, do something
-  //       const baseUrl = window.location.origin;
-  //       //could use this if we add price filter $.param({"name": "foo"})
-  //       window.location.replace(baseUrl + "&" + url);
-  //       // res.redirect("/user");
-  //     });
-  //   });
-  // });
-
   $("select.dropdown").on("change", function () {
-    const sortingMethod = $(this).val();
     const sortProductsPriceAscending = function () {
       const gridItems = $(".product-container");
-
       gridItems.sort(function (a, b) {
         return (
           $(".prod-price", a).data("price") - $(".prod-price", b).data("price")
         );
       });
-
       $(".feature-container").append(gridItems);
     };
 
     const sortProductsPriceDescending = function () {
       const gridItems = $(".product-container");
-
       gridItems.sort(function (a, b) {
         return (
           $(".prod-price", b).data("price") - $(".prod-price", a).data("price")
         );
       });
-
       $(".feature-container").append(gridItems);
     };
 
+    const sortingMethod = $(this).val();
     if (sortingMethod === "l2h") {
       sortProductsPriceAscending();
     } else if (sortingMethod === "h2l") {
