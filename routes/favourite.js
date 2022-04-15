@@ -8,21 +8,33 @@ module.exports = (db) => {
     const userId = req.session.userId;
     const listingId = req.body.listingId;
     console.log("INSERT LISTING ID", listingId)
+    const checkData = `SELECT *
+    FROM favourites
+    WHERE user_id = $1
+    AND listing_id = $2
+    `
     const sql = `INSERT
     INTO favourites (user_id, listing_id)
     VALUES ($1, $2)
     RETURNING *
     `
-    //AVOID DUPLICATES
-    db.query(sql, [userId, listingId])
+    db.query(checkData, [userId, listingId])
     .then((result) => {
-      res.send(result.rows)
-      console.log("INSERT RESULT ROWS", result.rows)
+      console.log("FAVOURITED RESULT", result.rows.length)
+      if(result.rows.length === 0) {
+        db.query(sql, [userId, listingId])
+        .then((result) => {
+          res.send(result.rows)
+          console.log("INSERT RESULT ROWS", result.rows)
+        })
+        .catch((e) => {
+          console.error(e);
+          res.send(e);
+        });
+      } else {
+        console.log("this has already been favourited")
+      }
     })
-    .catch((e) => {
-      console.error(e);
-      res.send(e);
-    });
   });
 
   router.post("/delete", (req, res) => {
