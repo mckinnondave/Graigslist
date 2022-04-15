@@ -75,6 +75,7 @@
   justify-content: space-around;
   border: solid black;
   width: 25%;
+  background-color: white;
 }
 
 .product-icons {
@@ -186,7 +187,7 @@
   border: solid black 5px;
   border-radius: 10px;
   width: 40%;
-  height: auto;
+  height: 600px;
   margin-top: 2em;
   margin-left: 2em;
 }
@@ -196,7 +197,7 @@
   align-items: center;
   font-weight: bold;
   font-size: large;
-  height: 20%;
+  height: 15%;
   margin-left: 10px;
 }
 
@@ -219,10 +220,12 @@
 
 .like-offer {
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 20%;
+  height: 10%;
+  padding-right: 10px
 }
 
 .make-offer-btn {
@@ -236,7 +239,7 @@
 
 .lrg-sold {
   color: rgb(255, 56, 56);
-  font-size: 30px;
+  font-size: 23px;
   font-weight: bold;
   display: flex;
   justify-content: center;

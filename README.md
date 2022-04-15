@@ -1,14 +1,40 @@
-# LHL Node Skeleton
+# Graigslist
 
-## Project Setup
+## Overview
 
-The following steps are only for _one_ of the group members to perform.
+Graigslist is an app that allows fictitious users to create items for sale, have those items saved to a database, and then display them on various pages. The items can be searched for and favourited by a user, and an owner for an item can delete or mark their items as sold. As well, a messaging app has been created for the site to allow users and owners to interact with one another.
 
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
+This app was created as a Lighthouse Labs midterm project whose contributors are:
+- Dustin Grof (dustingrof)
+- Emily Bozek (feltfan)
+- Dave McKinnon (mckinnondave)
+
+## Features
+
+Users can:
+- View featured listings on the homepage
+- Click on a product's name and be redirected to that product's page
+- View items in various categories
+- Search for items through a search bar
+- Sort items by price (high-to-low or low-to-high)
+
+Account Owners can:
+- Do all that a non-account user can plus:
+  - Login
+  - View their profile
+  - Create a new listing
+  - "Like" products to save for later viewing
+  - Delete items they have posted
+  - Mark items as sold (which is shown on all other pages showing the item)
+  - Start or join conversations with other account owners
+
+## Screenshots
+
+!["Homepage"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-2022-04-14-22_29_23.png?raw=true)
+!["Category Search"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-listings-categories-furniture-2022-04-14-22_30_33.png?raw=true)
+!["User Page"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-user-2-2022-04-14-22_31_16.png?raw=true)
+!["User Page With New Product Listing Form"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-user-6-2022-04-14-22_32_37.png?raw=true)
+!["Messaging System"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-messages-2022-04-14-22_48_40.png?raw=true)
 
 ## Getting Started
 
@@ -45,88 +71,17 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
-
-
-
-
-
-# Graigslist
-
-## Overview
-
-Graigslist is an app that allows fictitious users to create items for sale, have those items saved to a database, and then display them on various pages. The items can be searched for and favourited by a user, and an owner for an item can delete or mark their items as sold. As well, a messaging app has been created for the site to allow users and owners to interact with one another.
-
-This app was created as a Lighthouse Labs midterm project whose contributors are:
-- Dustin Grof (dustingrof)
-- Emily Bozek (feltfan)
-- Dave McKinnon (mckinnondave)
-
-## Features
-
-Users can:
-- View featured listings on the homepage
-- Click on a product's name and be redirected to that product's page
-- View items in various categories
-- Search for items through a search bar
-- Sort items by price (high-to-low or low-to-high)
-
-Account Owners can:
-- Do all that a non-account user can plus:
-  - Login
-  - View their profile
-  - Create a new listing
-  - "Like" products to save for later viewing
-  - Delete items they have posted
-  - Mark items as sold (which is shown on all other pages showing the item)
-  - Start or join conversations with other account owners
-
-
-
-## Final Product
-
-!["Desktop Layout"](https://github.com/mckinnondave/tweeter/blob/master/public/images/fullscreen.png?raw=true)
-!["Tablet Layout"](https://github.com/mckinnondave/tweeter/blob/master/public/images/tablet-size.png?raw=true)
-
-## Getting Started
-
-1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
-2. Clone your repository onto your local device.
-3. Install dependencies using the `npm install` command.
-3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
-4. Go to <http://localhost:8080/> in your browser.
-
-## Dependencies
-
-- Express
-- Node 5.10.x or above
-- Chance
-- Body-parser
-- MD5
+- Chalk ^2.4.2
+- Cookie-session ^2.0.0
+- Dotenv ^2.0.0
+- Ejs ^2.6.2
+- Express ^4.17.1
+- Morgan ^1.9.1
+- Node-sass ^7.0.1
+- Sass ^1.35.1
 
 ## Dev Dependencies
 
-- Nodemon
+- Nodemon ^2.0.15
 
-## Directories
 
-### Public
-
-#### Images
-
-- Contains profile image and screenshots of project
-
-#### Scripts
-
-- Contains all Javascript files used in project
-
-#### Styles
-
-- Contains all CSS files used in project
-
-#### Vendor
-
-- Contains 3rd party code
-
-### Server
-
-- Contains all server logic
