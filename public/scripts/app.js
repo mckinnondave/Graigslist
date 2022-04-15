@@ -134,6 +134,41 @@ $(document).ready(function () {
   //   });
   // });
 
+  $(".fa-heart").click( function (event) {
+    event.preventDefault();
+    let listingId = $(this).attr("data-id")
+    $.ajax({
+      method: "POST",
+      url: '/favourite',
+      data: { listingId }
+    }).then((data) => {
+      console.log("FAVOURITE DATA", data[0]);
+      //if class === true exists, then remove class, and add false
+      //ifnot then remove false, add true
+      $(this).addClass("true");
+    })
+    .catch((e) => {
+      console.log(e)
+    });
+  });
+
+  $(".fa-remove").click( function (event) {
+    event.preventDefault();
+    let listingId = $(this).attr("data-id3")
+    console.log("DATA ID", $(this).attr("data-id3"))
+    $.ajax({
+      method: "POST",
+      url: '/favourite/delete',
+      data: { listingId }
+    }).then((data) => {
+      $(`#favourite-${listingId}`).remove()
+      console.log("DATA", data);
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  })
+
   $("select.dropdown").on("change", function () {
     const sortingMethod = $(this).val();
     if (sortingMethod === "l2h") {
