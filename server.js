@@ -65,6 +65,7 @@ const logoutRoutes = require("./routes/logout");
 const searchRoutes = require("./routes/search");
 const listingsRoutes = require("./routes/listings");
 const messagesRoutes = require("./routes/messages");
+const favouriteRoutes = require("./routes/favourite");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -74,6 +75,7 @@ app.use("/logout", logoutRoutes());
 app.use("/search", searchRoutes(db, dbHelpers));
 app.use("/listings", listingsRoutes(db, dbHelpers));
 app.use("/messages", messagesRoutes(db, dbHelpers));
+app.use("/favourite", favouriteRoutes(db, dbHelpers));
 
 // Note: mount other resources here, using the same pattern above
 
