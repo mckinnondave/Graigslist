@@ -34,6 +34,7 @@ Account Owners can:
 !["Category Search"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-listings-categories-furniture-2022-04-14-22_30_33.png?raw=true)
 !["User Page"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-user-2-2022-04-14-22_31_16.png?raw=true)
 !["User Page With New Product Listing Form"](hhttps://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-user-6-2022-04-14-22_32_37.png?raw=true)
+!["Messaging System"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-messages-2022-04-14-22_48_40.png?raw=true)
 
 ## Getting Started
 
