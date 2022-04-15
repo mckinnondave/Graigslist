@@ -30,7 +30,10 @@ Account Owners can:
 
 ## Screenshots
 
-!["Screenshot of New Short URL page"](https://github.com/mckinnondave/tinyapp/blob/master/docs/newURL.png?raw=true)
+!["Homepage"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-2022-04-14-22_29_23.png?raw=true)
+!["Category Search"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-listings-categories-furniture-2022-04-14-22_30_33.png?raw=true)
+!["User Page"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-user-2-2022-04-14-22_31_16.png?raw=true)
+!["User Page With New Product Listing Form"](hhttps://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-user-6-2022-04-14-22_32_37.png?raw=true)
 
 ## Getting Started
 
