@@ -85,8 +85,6 @@ $(document).ready(function () {
     event.preventDefault();
     const searchData = $("#search-text").val();
     const cleanSearchData = searchData.replace(/[^A-Z0-9]+/gi, "+");
-
-    //attach query string to search url
     let url = "/search?name=";
     url += cleanSearchData;
 
