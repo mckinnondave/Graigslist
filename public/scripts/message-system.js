@@ -46,36 +46,31 @@ $(document).ready(function () {
     // });
   };
 
-  // Prevent page refresh on submit of tweet form
-  // Check if new tweet form is empty or over character limit
-  // Display errors if true, hide when valid input is submitted
-  // console.log("USEROBJS", userObj[0].userId);
+  //submit a message when button is clicked
   $("#message-form").on("submit", function (event) {
-    if (window.location.pathname === `/messages`) {
-      event.preventDefault();
-    }
+    event.preventDefault();
     const messageData = $("#message-text").val();
     const data = $("#message-form").serialize();
-
-    // SO CLOSE HERE>
-    if (window.location.pathname === `/messages`) {
-      $.post("/messages/", data).then(() => {
-        $("#message-list").empty();
-        newFunction($(".conversation.selected"));
-        $("#message-form").trigger("reset");
-        $("#message-text").focus();
-      });
-    } else {
-      $.post("/listings/:id", data).then(() => {
-        // console.log("FANCY STUFF", makeAnOfferPush(data, db));
-        // makeAnOfferPush(data, db);
-        // window.location.pathname = "/messages/";
-      });
-    }
+    $.post("/messages/", data).then(() => {
+      $("#message-list").empty();
+      newFunction($(".conversation.selected"));
+      $("#message-form").trigger("reset");
+      $("#message-text").focus();
+    });
   });
-  // } else {
-  //   // sdfsdf
-  // }
+  // submit a message when enter is clicked
+  $("#message-text").keypress(function (e) {
+    if (e.which == 13) {
+      $("#message-form").submit();
+      return false; //<---- Add this line
+    }
+    $.post("/messages/", data).then(() => {
+      $("#message-list").empty();
+      newFunction($(".conversation.selected"));
+      $("#message-form").trigger("reset");
+      $("#message-text").focus();
+    });
+  });
 
   const newFunction = (element) => {
     const thisId = $(element).attr("id");
