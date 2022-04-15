@@ -1,13 +1,3 @@
-/* eslint-disable no-undef */
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- */
-
-// const { load } = require("sass");
-
-// const getAllMessagesForConvo = module.imports;
-
 $(document).ready(function () {
   // to protect against cross site scripting attaks, used in the createTweetElement below
   const escapeFunc = function (str) {
@@ -19,9 +9,12 @@ $(document).ready(function () {
   // Used as a template to create a new message via AJAX
   const createMessageElement = function (data) {
     const safeText = escapeFunc(data.body);
-    // could maybe use a ternary to set whether class is from-me or from-them
-    let className = "from-them";
-    // if ((senderid = userid)) {
+    /*** TO DO Make Messages Switch Sides */
+    let className = "from-me";
+    // let formReceiverId = $('input[name="receiver_id"]').val();
+    // // let senderId = $(".conversation.selected").attr("data-sender-id");
+    // let senderId = data.reciver_id;
+    // if (formReceiverId === senderId) {
     //   className = "from-me";
     // }
 
@@ -41,9 +34,6 @@ $(document).ready(function () {
 
   const loadMessages = function () {
     $(".conversation:first-child").trigger("click");
-    // $.ajax("/messages/list", { method: "GET" }).then((messagesData) => {
-    //   $(".messages").prepend(renderMessages(messagesData));
-    // });
   };
 
   //submit a message when button is clicked
@@ -62,7 +52,7 @@ $(document).ready(function () {
   $("#message-text").keypress(function (e) {
     if (e.which == 13) {
       $("#message-form").submit();
-      return false; //<---- Add this line
+      return false; //<---- prevent default
     }
     $.post("/messages/", data).then(() => {
       $("#message-list").empty();
@@ -76,7 +66,6 @@ $(document).ready(function () {
     const thisId = $(element).attr("id");
     $(".conversation").removeClass("selected");
     $(element).addClass("selected");
-    // alert($(this).attr("id"));
     $.ajax(`/messages/convo/${thisId}`, { method: "GET" }).then(
       (messagesData) => {
         $("#message-list");
@@ -88,7 +77,6 @@ $(document).ready(function () {
 
   $(".conversation").click(function () {
     newFunction(this);
-    //set the value of convo id and reciever id
     $('input[name="conversation_id"]').val($(this).attr("id"));
     $('input[name="receiver_id"]').val($(this).attr("data-receiver-id"));
   });
