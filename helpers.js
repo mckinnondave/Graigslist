@@ -129,7 +129,7 @@ const getAllConvos = (userId, db) => {
   console.log("USERID", userId);
   let getAllConvosQuery = `
 
-select distinct on (conversations.id)
+SELECT DISTINCT on (conversations.id)
 conversations.id as conversation_id,
 listings.name as listing_name,
 listings.creator_id as creator_id,
@@ -138,13 +138,13 @@ messages.receiver_id as receiver_id,
 a.name as sender_name,
 b.name as receiver_name
 from conversations
-join messages on conversations.id = conversation_id
-JOIN users a ON messages.sender_id = a.id
-JOIN users b ON messages.receiver_id = b.id
-JOIN listings ON listing_id = listings.id
+JOIN messages on conversations.id = conversation_id
+FULL OUTER JOIN users a ON messages.sender_id = a.id
+FULL OUTER JOIN users b ON messages.receiver_id = b.id
+FULL OUTER JOIN listings ON listing_id = listings.id
 where sender_id = $1 or receiver_id = $1
 group by conversations.id, messages.sender_id, messages.receiver_id, a.name, b.name, listings.name, listings.creator_id
-ORDER BY conversation_id;
+ORDER BY conversation_id DESC;
 
 
 
@@ -188,30 +188,35 @@ const pushMessage = (message, db) => {
 };
 
 const makeAnOfferPush = (message, db) => {
-  const queryParams = [
-    message.listing_id,
-    message.body,
-    message.sender_id,
-    message.receiver_id,
-  ];
+  const queryParams = [message.listing_id];
   // console.log("MESSAGE", message);
   // console.log("queryParams", queryParams);
-  let makeAnOfferPushQuery = `
+  let createConvoInsert = `
     INSERT INTO conversations
       (listing_id)
     VALUES
       ($1)
     RETURNING conversations.id as conversation_id;
-    INSERT INTO messages
+  `;
+  let createMessageInsert = `
+      INSERT INTO messages
       (conversation_id,body,sender_id,receiver_id)
-    VALUES
-      (conversation_id, $2, $3, $4);
+      VALUES
+      ($1, $2, $3, $4);
   `;
   return db
-    .query(makeAnOfferPushQuery, queryParams)
+    .query(createConvoInsert, queryParams)
     .then((result) => {
-      console.log("RESULT ROWS", result.rows);
-      return;
+      console.log("RESULT", result);
+      const queryParams2 = [
+        result.rows[0].conversation_id,
+        message.body,
+        message.sender_id,
+        message.receiver_id,
+      ];
+      return db.query(createMessageInsert, queryParams2).then((result2) => {
+        return;
+      });
     })
     .catch((err) => {
       console.log(err.message);
@@ -269,3 +274,20 @@ module.exports = {
 };
 
 //get all properties from light bnb
+
+// SELECT DISTINCT on (conversations.id)
+// conversations.id as conversation_id,
+// listings.name as listing_name,
+// listings.creator_id as creator_id,
+// messages.sender_id as sender_id,
+// messages.receiver_id as receiver_id,
+// a.name as sender_name,
+// b.name as receiver_name
+// from conversations
+// JOIN messages on conversations.id = conversation_id
+// FULL OUTER JOIN users a ON messages.sender_id = a.id
+// FULL OUTER JOIN users b ON messages.receiver_id = b.id
+// FULL OUTER JOIN listings ON listing_id = listings.id
+// where sender_id = 2 or receiver_id = 2
+// group by conversations.id, messages.sender_id, messages.receiver_id, a.name, b.name, listings.name, listings.creator_id
+// ORDER BY conversation_id;
