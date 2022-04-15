@@ -129,6 +129,27 @@
                     </div>
                   </section>
                   <% } %>
+                  <div class="container">
+                    <h4 class="featured-items">Your Favourites</h4>
+                    <div class="feature-container">
+                      <% for(let item of favouriteItems) { %>
+                      <section class="product-container" id="favourite-<%= item.id%>">
+                        <div class="product-image">
+                          <img src="<%= item.image_url %>" class="result-image">
+                        </div>
+                        <div class="product-bar">
+                          <div class="product-name"><%= item.name %></div>
+                          <div class="price-logo-box">
+                            <div class="prod-price">$<%= parseFloat(item.price_in_cents/1000).toFixed(2) %></div>
+                            <div class="product-icons">
+                              <i class="fa-solid fa-remove" data-id3="<%= item.id %>"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-description"><%= item.description %></div>
+                      </section>
+                      <% } %>
+                    </div>
               </div>
             </div>
             <%- include('partials/_footer') %>
