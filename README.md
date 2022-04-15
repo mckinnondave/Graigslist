@@ -45,3 +45,88 @@ The following steps are only for _one_ of the group members to perform.
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
+
+
+
+
+# Graigslist
+
+## Overview
+
+Graigslist is an app that allows fictitious users to create items for sale, have those items saved to a database, and then display them on various pages. The items can be searched for and favourited by a user, and an owner for an item can delete or mark their items as sold. As well, a messaging app has been created for the site to allow users and owners to interact with one another.
+
+This app was created as a Lighthouse Labs midterm project whose contributors are:
+- Dustin Grof (dustingrof)
+- Emily Bozek (feltfan)
+- Dave McKinnon (mckinnondave)
+
+## Features
+
+Users can:
+- View featured listings on the homepage
+- Click on a product's name and be redirected to that product's page
+- View items in various categories
+- Search for items through a search bar
+- Sort items by price (high-to-low or low-to-high)
+
+Account Owners can:
+- Do all that a non-account user can plus:
+  - Login
+  - View their profile
+  - Create a new listing
+  - "Like" products to save for later viewing
+  - Delete items they have posted
+  - Mark items as sold (which is shown on all other pages showing the item)
+  - Start or join conversations with other account owners
+
+
+
+## Final Product
+
+!["Desktop Layout"](https://github.com/mckinnondave/tweeter/blob/master/public/images/fullscreen.png?raw=true)
+!["Tablet Layout"](https://github.com/mckinnondave/tweeter/blob/master/public/images/tablet-size.png?raw=true)
+
+## Getting Started
+
+1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
+2. Clone your repository onto your local device.
+3. Install dependencies using the `npm install` command.
+3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
+4. Go to <http://localhost:8080/> in your browser.
+
+## Dependencies
+
+- Express
+- Node 5.10.x or above
+- Chance
+- Body-parser
+- MD5
+
+## Dev Dependencies
+
+- Nodemon
+
+## Directories
+
+### Public
+
+#### Images
+
+- Contains profile image and screenshots of project
+
+#### Scripts
+
+- Contains all Javascript files used in project
+
+#### Styles
+
+- Contains all CSS files used in project
+
+#### Vendor
+
+- Contains 3rd party code
+
+### Server
+
+- Contains all server logic
