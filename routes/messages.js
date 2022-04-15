@@ -46,6 +46,25 @@ module.exports = (db, dbHelpers) => {
     });
   });
 
+  router.post("/:id", function (req, res) {
+    // console.log("REQBODY", req.body.listing_id);
+    const message = {
+      body: req.body.text,
+      sender_id: req.session.userId,
+      receiver_id: req.body.receiver_id,
+      listing_id: req.body.listing_id,
+    };
+    console.log("MESSAGE", message);
+    dbHelpers
+      .makeAnOfferPush(message, db)
+      .then((results) => {
+        res.send(200);
+      })
+      .catch((err) => {
+        // error message
+      });
+  });
+
   router.post("/", function (req, res) {
     // if (!req.session.userId) {
     //   res.redirect("/login");

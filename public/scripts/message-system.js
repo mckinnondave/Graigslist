@@ -39,8 +39,6 @@ $(document).ready(function () {
     }
   };
 
-  // const loadMessages = function () {
-  // };
   const loadMessages = function () {
     $(".conversation:first-child").trigger("click");
     // $.ajax("/messages/list", { method: "GET" }).then((messagesData) => {
@@ -48,24 +46,10 @@ $(document).ready(function () {
     // });
   };
 
-  // Prevent page refresh on submit of tweet form
-  // Check if new tweet form is empty or over character limit
-  // Display errors if true, hide when valid input is submitted
+  //submit a message when button is clicked
   $("#message-form").on("submit", function (event) {
     event.preventDefault();
     const messageData = $("#message-text").val();
-    if (messageData === "" || messageData === null) {
-      $("#message-errors")
-        .html("Your message is empty, please add some text!")
-        .slideDown("slow")
-        .css("display", "block");
-    } else {
-      $("#message-errors").slideUp("slow");
-    }
-
-    // On form submission serialize the data and send it to /messages
-    // Then empty the message list and reload the messages in reverse chronological order
-    // Reset the form and focus the curser back in there
     const data = $("#message-form").serialize();
     $.post("/messages/", data).then(() => {
       $("#message-list").empty();
@@ -74,7 +58,19 @@ $(document).ready(function () {
       $("#message-text").focus();
     });
   });
-  // $("#message-form").on("click", function (event) {});
+  // submit a message when enter is clicked
+  $("#message-text").keypress(function (e) {
+    if (e.which == 13) {
+      $("#message-form").submit();
+      return false; //<---- Add this line
+    }
+    $.post("/messages/", data).then(() => {
+      $("#message-list").empty();
+      newFunction($(".conversation.selected"));
+      $("#message-form").trigger("reset");
+      $("#message-text").focus();
+    });
+  });
 
   const newFunction = (element) => {
     const thisId = $(element).attr("id");

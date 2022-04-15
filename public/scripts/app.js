@@ -98,15 +98,13 @@ $(document).ready(function () {
   });
 
   $(".btn-new-listing").click(function () {
-      $(".post-listing-box").slideToggle("slow");
+    $(".post-listing-box").slideToggle("slow");
   });
 
   $("#search-form").on("submit", function (event) {
     event.preventDefault();
     const searchData = $("#search-text").val();
     const cleanSearchData = searchData.replace(/[^A-Z0-9]+/gi, "+");
-
-    //attach query string to search url
     let url = "/search?name=";
     url += cleanSearchData;
 
@@ -120,54 +118,42 @@ $(document).ready(function () {
     });
   });
 
-  //   $(".price-high").on("click", function (event) {
-  //     event.preventDefault();
-  //     let url = "price_desc=true";
-  //     //do the get api call
-  //     $.get(url).then((response) => {
-  //       // once sort order is returned, do something
-  //       const baseUrl = window.location.origin;
-  //       //could use this if we add price filter $.param({"name": "foo"})
-  //       window.location.replace(baseUrl + "&" + url);
-  //       // res.redirect("/user");
-  //     });
-  //   });
-  // });
-
-  $(".fa-heart").click( function (event) {
+  $(".fa-heart").click(function (event) {
     event.preventDefault();
-    let listingId = $(this).attr("data-id")
+    let listingId = $(this).attr("data-id");
     $.ajax({
       method: "POST",
-      url: '/favourite',
-      data: { listingId }
-    }).then((data) => {
-      console.log("FAVOURITE DATA", data[0]);
-      //if class === true exists, then remove class, and add false
-      //ifnot then remove false, add true
-      $(this).addClass("true");
+      url: "/favourite",
+      data: { listingId },
     })
-    .catch((e) => {
-      console.log(e)
-    });
+      .then((data) => {
+        console.log("FAVOURITE DATA", data[0]);
+        //if class === true exists, then remove class, and add false
+        //ifnot then remove false, add true
+        $(this).addClass("true");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   });
 
-  $(".fa-remove").click( function (event) {
+  $(".fa-remove").click(function (event) {
     event.preventDefault();
-    let listingId = $(this).attr("data-id3")
-    console.log("DATA ID", $(this).attr("data-id3"))
+    let listingId = $(this).attr("data-id3");
+    console.log("DATA ID", $(this).attr("data-id3"));
     $.ajax({
       method: "POST",
-      url: '/favourite/delete',
-      data: { listingId }
-    }).then((data) => {
-      $(`#favourite-${listingId}`).remove()
-      console.log("DATA", data);
+      url: "/favourite/delete",
+      data: { listingId },
     })
-    .catch((e) => {
-      console.log(e)
-    })
-  })
+      .then((data) => {
+        $(`#favourite-${listingId}`).remove();
+        console.log("DATA", data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  });
 
   $("select.dropdown").on("change", function () {
     const sortingMethod = $(this).val();
