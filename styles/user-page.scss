@@ -43,7 +43,6 @@ $border-color: #b4b4b4;
   flex-direction: column;
   border: solid black;
   margin-left: 20px;
-  margin-right: 20px;
   width: 60%;
   height: 90%;
 }
@@ -146,6 +145,7 @@ $border-color: #b4b4b4;
 
 .prod-cat {
   width: 50%;
+  color:rgb(117, 116, 116)
 }
 
 #my-listing-info-prod-name {
@@ -185,6 +185,13 @@ textarea {
 
 .fa-remove:hover {
   color: red;
+}
+
+#message-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 

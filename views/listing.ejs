@@ -52,25 +52,25 @@
         <img src="<%= results.image_url %>" class="lrg-img" />
       </div>
       <div class="lrg-prod-desc-box">
-        <div class="lrg-prod-name"><%= results.name %></div>
         <div class="like-offer">
           <div class="lrg-prod-price">
+
+
+
+          <% if (!results.sold) { %>
             <div class="lrg-price">
               $<%= parseFloat(results.price_in_cents/1000).toFixed(2) %>
             </div>
-            <i
+          <% } else { %>
+          <div class="lrg-sold">Sold!</div>
+          <% } %>
+          <i
               class="fa-solid fa-heart fa-xl prod-heart"
               data-id="<%= results.id %>"
             ></i>
           </div>
-          <% if (!results.sold) { %>
-          <!-- <button class="btn btn-outline-danger make-offer-btn btn-sm"> -->
-          <!-- Make An Offer -->
-          <!-- </button> -->
-          <% } else { %>
-          <div class="lrg-sold">Sold!</div>
-          <% } %>
         </div>
+        <div class="lrg-prod-name"><%= results.name %></div>
         <div class="lrg-prod-desc"><%= results.description %></div>
         <div class="compose-message">
           <div id="message-errors"></div>
@@ -92,7 +92,7 @@
             <button
               type="submit"
               id="message-submit-button"
-              class="submit-button"
+              class="btn btn-outline-success submit-button"
             >
               Send
             </button>
@@ -100,34 +100,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="container main-prod-container">
-      <div class="lrg-prod-img">
-        <img src="<%= results.image_url %>" class="lrg-img" />
-      </div>
-      <div class="lrg-prod-desc-box">
-        <div class="lrg-prod-name"><%= results.name %></div>
-        <div class="lrg-prod-desc"><%= results.description %></div>
-        <div class="like-offer">
-          <div class="lrg-prod-price">
-            <div class="lrg-price">
-              $<%= parseFloat(results.price_in_cents/1000).toFixed(2) %>
-            </div>
-            <i
-              class="fa-solid fa-heart fa-xl prod-heart"
-              data-id="<%= results.id %>"
-            ></i>
-          </div>
-          <% if (!results.sold) { %>
-          <button class="btn btn-outline-danger make-offer-btn btn-sm">
-            Make An Offer
-          </button>
-          <% } else { %>
-          <div class="lrg-sold">Sold!</div>
-          <% } %>
-        </div>
-      </div>
-    </div> -->
     <%- include('partials/_footer') %>
 
     <!-- Bootstrap JS -->
@@ -146,5 +118,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+
   </body>
 </html>
