@@ -8,6 +8,7 @@ module.exports = (db) => {
     const userId = req.session.userId;
     const listingId = req.body.listingId;
     console.log("INSERT LISTING ID", listingId)
+    
     const checkData = `SELECT *
     FROM favourites
     WHERE user_id = $1
@@ -18,6 +19,7 @@ module.exports = (db) => {
     VALUES ($1, $2)
     RETURNING *
     `
+    // WHY DOES THIS MAKE THINGS SO SLOW
     db.query(checkData, [userId, listingId])
     .then((result) => {
       console.log("FAVOURITED RESULT", result.rows.length)
