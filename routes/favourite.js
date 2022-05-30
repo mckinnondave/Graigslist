@@ -4,11 +4,9 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.post("/", (req, res) => {
-    console.log("FAVOURITES REQ BODY", req.body)
     const userId = req.session.userId;
     const listingId = req.body.listingId;
-    console.log("INSERT LISTING ID", listingId)
-    
+
     const checkData = `SELECT *
     FROM favourites
     WHERE user_id = $1
@@ -42,7 +40,6 @@ module.exports = (db) => {
   router.post("/delete", (req, res) => {
     const userId = req.session.userId;
     const listingId = req.body.listingId;
-    console.log("DELETE LISTING ID", listingId, "USER ID", userId)
     const sql = `DELETE
     FROM favourites
     WHERE user_id = $1 AND listing_id = $2

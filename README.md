@@ -28,7 +28,6 @@ Account Owners can:
   - Mark items as sold (which is shown on all other pages showing the item)
   - Start or join conversations with other account owners
 
-## Screenshots
 
 !["Homepage"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-2022-04-14-22_29_23.png?raw=true)
 !["Category Search"](https://github.com/mckinnondave/buy-sell/blob/master/images/screencapture-localhost-8080-listings-categories-furniture-2022-04-14-22_30_33.png?raw=true)
